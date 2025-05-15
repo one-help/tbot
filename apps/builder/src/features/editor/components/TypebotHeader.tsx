@@ -71,6 +71,7 @@ export const TypebotHeader = () => {
         pos={{ base: "absolute" }}
         typebotId={typebot?.id}
         isResultsDisplayed={isDefined(publishedTypebot)}
+        currentUserMode={currentUserMode}
       />
       <RightElements
         right="40px"
@@ -266,6 +267,7 @@ const RightElements = ({
     <HStack {...props}>
       <TypebotNav
         display={{ base: "none", md: "flex", xl: "none" }}
+        currentUserMode={currentUserMode}
         typebotId={typebot?.id}
         isResultsDisplayed={isResultsDisplayed}
       />
@@ -305,8 +307,10 @@ const RightElements = ({
 const TypebotNav = ({
   typebotId,
   isResultsDisplayed,
+  currentUserMode,
   ...stackProps
 }: {
+  currentUserMode?: string;
   typebotId?: string;
   isResultsDisplayed: boolean;
 } & StackProps) => {
