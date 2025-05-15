@@ -3,10 +3,10 @@ import type { TRPCError } from "@trpc/server";
 
 const ignoreTrpcMessages = [
   "potential malicious typebot",
-  "typebot not found",
+  "bot not found",
   "workspace not found",
   "workspace with same name already exists",
-  "no typebots found",
+  "no bots found",
 ];
 
 const crawlersToIgnore = ["Googlebot"];

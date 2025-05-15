@@ -46,7 +46,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       },
     });
     if (!typebot || (await isReadTypebotForbidden(typebot, user)))
-      return notFound(res, "Typebot not found");
+      return notFound(res, "Bot not found");
     if (!isTypebotVersionAtLeastV6(typebot.version)) return badRequest(res);
     const block = parseGroups(typebot.groups, {
       typebotVersion: typebot.version,

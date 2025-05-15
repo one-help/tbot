@@ -17,7 +17,7 @@ export const trackEvents = async (events: TelemetryEvent[]) => {
       });
       return;
     }
-    if (event.name === "Typebot created") {
+    if (event.name === "Bot created") {
       client.groupIdentify({
         distinctId: event.userId,
         groupType: "typebot",

@@ -49,7 +49,7 @@ const userUpdatedEventSchema = userEvent.merge(
 
 const typebotCreatedEventSchema = typebotEvent.merge(
   z.object({
-    name: z.literal("Typebot created"),
+    name: z.literal("Bot created"),
     data: z
       .object({
         template: z.string().optional(),
@@ -60,7 +60,7 @@ const typebotCreatedEventSchema = typebotEvent.merge(
 
 const publishedTypebotEventSchema = typebotEvent.merge(
   z.object({
-    name: z.literal("Typebot published"),
+    name: z.literal("Bot published"),
     data: z.object({
       isFirstPublish: z.literal(true).optional(),
     }),

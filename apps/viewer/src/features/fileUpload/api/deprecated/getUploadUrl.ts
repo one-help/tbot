@@ -58,7 +58,7 @@ export const getUploadUrl = publicProcedure
     if (!publicTypebot)
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: "Typebot not found",
+        message: "Bot not found",
       });
 
     const fileUploadBlock = await getFileUploadBlock(publicTypebot, blockId);

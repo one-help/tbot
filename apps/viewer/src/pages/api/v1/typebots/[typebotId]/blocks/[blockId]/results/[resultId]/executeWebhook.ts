@@ -52,7 +52,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       },
     });
     if (!typebot || (await isReadTypebotForbidden(typebot, user)))
-      return notFound(res, "Typebot not found");
+      return notFound(res, "Bot not found");
     if (!typebot) return notFound(res);
     if (!isTypebotVersionAtLeastV6(typebot.version))
       return internalServerError(res);

@@ -329,7 +329,7 @@ const getTypebot = async (startParams: StartParams): Promise<StartTypebot> => {
   if (!parsedTypebot || parsedTypebot.isArchived)
     throw new TRPCError({
       code: "NOT_FOUND",
-      message: "Typebot not found",
+      message: "Bot not found",
     });
 
   const isQuarantinedOrSuspended =
