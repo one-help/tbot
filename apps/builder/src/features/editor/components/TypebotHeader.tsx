@@ -37,7 +37,7 @@ import { useDebouncedCallback } from "use-debounce";
 import { headerHeight } from "../constants";
 import { useEditor } from "../providers/EditorProvider";
 import { useTypebot } from "../providers/TypebotProvider";
-import { EditablebotName } from "./EditablebotName";
+import { EditablebotName } from "./EditableTypebotName";
 import { GuestTypebotHeader } from "./UnauthenticatedTypebotHeader";
 
 export const TypebotHeader = () => {
