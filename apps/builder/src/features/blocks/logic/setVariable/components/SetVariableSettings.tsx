@@ -79,7 +79,7 @@ export const SetVariableSettings = ({ options, onOptionsChange }: Props) => {
     <Stack spacing={4}>
       <Stack>
         <FormLabel mb="0" htmlFor="variable-search">
-          Search or create variable:
+          Procure ou crie uma variável:
         </FormLabel>
         <VariableSearchInput
           onSelectVariable={updateVariableId}

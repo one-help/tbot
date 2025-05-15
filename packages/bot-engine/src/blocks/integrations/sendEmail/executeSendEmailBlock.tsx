@@ -305,7 +305,7 @@ const getEmailBody = async ({
   return {
     html: render(
       <DefaultBotNotificationEmail
-        resultsUrl={`${env.NEXTAUTH_URL}/typebots/${typebot.id}/results`}
+        resultsUrl={`${env.NEXTAUTH_URL}/bots/${typebot.id}/results`}
         answers={omit(answers, "submittedAt")}
       />,
     ).html,

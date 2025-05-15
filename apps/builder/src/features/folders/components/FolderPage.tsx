@@ -25,7 +25,7 @@ export const FolderPage = () => {
       enabled: !!workspace && !!router.query.id && currentUserMode !== "guest",
       retry: 0,
       onError: (error) => {
-        if (error.data?.httpStatus === 404) router.replace("/typebots");
+        if (error.data?.httpStatus === 404) router.replace("/bots");
         toast({
           description: "Folder not found",
         });

@@ -162,14 +162,15 @@ export const WorkspaceSettingsModal = ({
               )}
             </Stack>
           </Stack>
-
-          <Flex justify="center" pt="10">
-            <Text color="gray.500" fontSize="xs">
-              {t("workspace.settings.modal.menu.version.label", {
-                version: packageJson.version,
-              })}
-            </Text>
-          </Flex>
+          {currentUserMode === "write" && (
+            <Flex justify="center" pt="10">
+              <Text color="gray.500" fontSize="xs">
+                {t("workspace.settings.modal.menu.version.label", {
+                  version: packageJson.version,
+                })}
+              </Text>
+            </Flex>
+          )}
         </Stack>
 
         {isOpen && (

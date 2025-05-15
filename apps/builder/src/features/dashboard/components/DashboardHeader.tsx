@@ -21,7 +21,8 @@ import React from "react";
 export const DashboardHeader = () => {
   const { t } = useTranslate();
   const { user, logOut } = useUser();
-  const { workspace, switchWorkspace, createWorkspace } = useWorkspace();
+  const { workspace, switchWorkspace, createWorkspace, currentUserMode } =
+    useWorkspace();
   const { asPath } = useRouter();
 
   const isRedirectFromCredentialsCreation = asPath.includes("credentials");
@@ -47,9 +48,9 @@ export const DashboardHeader = () => {
         maxW="1000px"
         flex="1"
       >
-        <Link href="/typebots" data-testid="typebot-logo">
+        <Link href="/bots" data-testid="typebot-logo">
           <EmojiOrImageIcon
-            boxSize="30px"
+            boxSize="80px"
             icon={workspace?.icon}
             defaultIcon={HardDriveIcon}
           />

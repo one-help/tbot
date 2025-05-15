@@ -53,16 +53,16 @@ export const GuestTypebotHeader = () => {
       >
         <Button
           as={Link}
-          href={`/typebots/${typebot?.id}/edit`}
+          href={`/bots/${typebot?.id}/edit`}
           colorScheme={router.pathname.includes("/edit") ? "orange" : "gray"}
           variant={router.pathname.includes("/edit") ? "outline" : "ghost"}
           size="sm"
         >
           {t("editor.header.flowButton.label")}
         </Button>
-        <Button
+        {/* <Button
           as={Link}
-          href={`/typebots/${typebot?.id}/theme`}
+          href={`/bots/${typebot?.id}/theme`}
           colorScheme={router.pathname.endsWith("theme") ? "orange" : "gray"}
           variant={router.pathname.endsWith("theme") ? "outline" : "ghost"}
           size="sm"
@@ -71,13 +71,13 @@ export const GuestTypebotHeader = () => {
         </Button>
         <Button
           as={Link}
-          href={`/typebots/${typebot?.id}/settings`}
+          href={`/bots/${typebot?.id}/settings`}
           colorScheme={router.pathname.endsWith("settings") ? "orange" : "gray"}
           variant={router.pathname.endsWith("settings") ? "outline" : "ghost"}
           size="sm"
         >
           {t("editor.header.settingsButton.label")}
-        </Button>
+        </Button> */}
       </HStack>
       <HStack
         pos="absolute"
@@ -110,7 +110,7 @@ export const GuestTypebotHeader = () => {
         spacing={4}
       >
         <HStack>
-          {typebot?.id && (
+          {/* {typebot?.id && (
             <Button
               as={Link}
               href={
@@ -118,10 +118,10 @@ export const GuestTypebotHeader = () => {
                   ? {
                       pathname: `/register`,
                       query: {
-                        redirectPath: `/typebots/${typebot.id}/duplicate`,
+                        redirectPath: `/bots/${typebot.id}/duplicate`,
                       },
                     }
-                  : `/typebots/${typebot.id}/duplicate`
+                  : `/bots/${typebot.id}/duplicate`
               }
               leftIcon={<CopyIcon />}
               isLoading={isNotDefined(typebot)}
@@ -129,8 +129,8 @@ export const GuestTypebotHeader = () => {
             >
               Duplicate
             </Button>
-          )}
-          {router.pathname.includes("/edit") && isNotDefined(rightPanel) && (
+          )} */}
+          {/* {router.pathname.includes("/edit") && isNotDefined(rightPanel) && (
             <Button
               colorScheme="orange"
               onClick={handlePreviewClick}
@@ -140,10 +140,10 @@ export const GuestTypebotHeader = () => {
             >
               Play bot
             </Button>
-          )}
+          )} */}
         </HStack>
 
-        {!user && (
+        {/* {!user && (
           <>
             <Divider orientation="vertical" h="25px" borderColor="gray.400" />
             <Button
@@ -156,7 +156,7 @@ export const GuestTypebotHeader = () => {
               Try Typebot
             </Button>
           </>
-        )}
+        )} */}
       </HStack>
     </Flex>
   );

@@ -273,15 +273,6 @@
               { "type": "p", "children": [{ "text": "Check out this video:" }] }
             ]
           }
-        },
-        {
-          "id": "z3ffqugex7gipsb4ke6ov874",
-          "type": "video",
-          "content": {
-            "url": "https://www.youtube.com/watch?v=jp3ggg_42-M&t=22s",
-            "id": "jp3ggg_42-M",
-            "type": "youtube"
-          }
         }
       ]
     },
@@ -313,15 +304,6 @@
             "richText": [
               { "type": "p", "children": [{ "text": "Check out this video:" }] }
             ]
-          }
-        },
-        {
-          "id": "rvdh4tk0ebg7t9tdga9aw8ao",
-          "type": "video",
-          "content": {
-            "url": "https://www.youtube.com/watch?v=jp3ggg_42-M&t=22s",
-            "id": "jp3ggg_42-M",
-            "type": "youtube"
           }
         }
       ]
@@ -355,15 +337,6 @@
               { "type": "p", "children": [{ "text": "Check out this video:" }] }
             ]
           }
-        },
-        {
-          "id": "jiz2uvo89456jpy081hazkd4",
-          "type": "video",
-          "content": {
-            "url": "https://www.youtube.com/watch?v=jp3ggg_42-M&t=22s",
-            "id": "jp3ggg_42-M",
-            "type": "youtube"
-          }
         }
       ]
     },
@@ -393,15 +366,6 @@
             "richText": [
               { "type": "p", "children": [{ "text": "Check out this video:" }] }
             ]
-          }
-        },
-        {
-          "id": "e3tlj1y4vyhtwcabzifv63q2",
-          "type": "video",
-          "content": {
-            "url": "https://www.youtube.com/watch?v=jp3ggg_42-M&t=22s",
-            "id": "jp3ggg_42-M",
-            "type": "youtube"
           }
         }
       ]

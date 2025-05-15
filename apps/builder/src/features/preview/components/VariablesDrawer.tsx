@@ -65,7 +65,7 @@ export const VariablesDrawer = ({ onClose }: Props) => {
 
   const handleCreateSubmit = (e: FormEvent) => {
     e.preventDefault();
-    toast.success("Variable created");
+    toast.success("Variável criada.");
     setSearchValue("");
     createVariable({
       id: createId(),
@@ -109,11 +109,11 @@ export const VariablesDrawer = ({ onClose }: Props) => {
 
       <Stack w="full" spacing="4">
         <CloseButton pos="absolute" right="1rem" top="1rem" onClick={onClose} />
-        <Heading fontSize="md">Variables</Heading>
+        <Heading fontSize="md">Variáveis</Heading>
         <HStack as="form" onSubmit={handleCreateSubmit}>
           <Input
             width="full"
-            placeholder="Search or create..."
+            placeholder="Procure ou crie..."
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
           />
@@ -208,8 +208,8 @@ const VariableItem = ({
             <PopoverContent>
               <PopoverBody>
                 <SwitchWithLabel
-                  label="Save in results"
-                  moreInfoContent="Check this option if you want to save the variable value in the bot Results table."
+                  label="Salvar em resultados"
+                  moreInfoContent="Essa variável será salva nos resultados do bot."
                   initialValue={!variable.isSessionVariable}
                   onCheckChange={() =>
                     onChange({

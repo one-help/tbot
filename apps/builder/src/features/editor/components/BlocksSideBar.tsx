@@ -224,7 +224,7 @@ export const BlocksSideBar = () => {
           gap="3"
         >
           <Input
-            placeholder="Search"
+            placeholder="Procurar componentes..."
             value={searchInput}
             onChange={handleSearchInputChange}
           />

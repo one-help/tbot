@@ -22,7 +22,7 @@ const Page = () => {
   const [selectedWorkspaceId, setSelectedWorkspaceId] = useState<string>();
   const { mutate, isLoading } = trpc.typebot.importTypebot.useMutation({
     onSuccess: (data) => {
-      push(`/typebots/${data.typebot.id}/edit`);
+      push(`/bots/${data.typebot.id}/edit`);
     },
   });
 

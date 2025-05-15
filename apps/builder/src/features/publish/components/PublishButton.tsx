@@ -84,7 +84,7 @@ export const PublishButton = ({
         if (!typebot?.id || currentUserMode === "guest") return;
         getPublishedTypebot.invalidate();
         if (!publishedTypebot && !pathname.endsWith("share"))
-          push(`/typebots/${query.typebotId}/share`);
+          push(`/bots/${query.typebotId}/share`);
       },
     });
 

@@ -162,7 +162,7 @@ export const PlanComparisonTables = ({ onChatsTiersClick }: Props) => (
             <CheckedTableCell />
           </TableRow>
           <TableRow>
-            <TableCellWithTooltip tooltip="Organize your typebots into folders">
+            <TableCellWithTooltip tooltip="Organize your bots into folders">
               Folders
             </TableCellWithTooltip>
             <TableCell />

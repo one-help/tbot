@@ -168,15 +168,15 @@ export const FolderContent = ({ folder }: Props) => {
         <Stack>
           <HStack>
             {folder && <BackButton id={folder.parentFolderId} />}
-            {currentUserMode !== "guest" && (
+            {/* {currentUserMode !== "guest" && (
               <CreateFolderButton
                 onClick={handleCreateFolder}
                 isLoading={isCreatingFolder || isFolderLoading}
               />
-            )}
+            )} */}
           </HStack>
           <Wrap spacing={4}>
-            {currentUserMode !== "guest" && (
+            {currentUserMode === "write" && (
               <CreateBotButton
                 folderId={folder?.id}
                 isLoading={isTypebotLoading}

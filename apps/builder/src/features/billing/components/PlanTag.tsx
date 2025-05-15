@@ -16,6 +16,7 @@ export const PlanTag = ({
   plan,
   ...props
 }: { plan: Plan } & TagProps): JSX.Element => {
+  return <></>;
   switch (plan) {
     case Plan.LIFETIME: {
       return (

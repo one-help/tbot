@@ -20,7 +20,7 @@ export const AbTestSettings = ({ options, onOptionsChange }: Props) => {
         defaultValue={options?.aPercent ?? defaultAbTestOptions.aPercent}
         onValueChange={updateAPercent}
         withVariableButton={false}
-        label="Percent of users to follow A:"
+        label="Porcentagem que vai para o A:"
         direction="column"
         max={100}
         min={0}

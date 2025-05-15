@@ -25,8 +25,8 @@ export const getServerSideProps = async (
       permanent: false,
       destination:
         context.locale !== context.defaultLocale
-          ? `/${context.locale}/typebots`
-          : "/typebots",
+          ? `/${context.locale}/bots`
+          : "/bots",
     },
   };
 };

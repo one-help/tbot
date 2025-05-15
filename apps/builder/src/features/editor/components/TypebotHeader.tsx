@@ -145,10 +145,10 @@ const LeftElements = ({
           icon={<ChevronLeftIcon fontSize="md" />}
           href={{
             pathname: router.query.parentId
-              ? "/typebots/[typebotId]/edit"
+              ? "/bots/[typebotId]/edit"
               : typebot?.folderId
-                ? "/typebots/folders/[id]"
-                : "/typebots",
+                ? "/bots/folders/[id]"
+                : "/bots",
             query: {
               id: typebot?.folderId ?? [],
               parentId: Array.isArray(router.query.parentId)
@@ -289,7 +289,7 @@ const RightElements = ({
       {currentUserMode === "guest" && (
         <Button
           as={Link}
-          href={`/typebots/${typebot?.id}/duplicate`}
+          href={`/bots/${typebot?.id}/duplicate`}
           leftIcon={<CopyIcon />}
           isLoading={isNotDefined(typebot)}
           size="sm"
@@ -317,7 +317,7 @@ const TypebotNav = ({
     <HStack {...stackProps}>
       <Button
         as={Link}
-        href={`/typebots/${typebotId}/edit`}
+        href={`/bots/${typebotId}/edit`}
         colorScheme={router.pathname.includes("/edit") ? "orange" : "gray"}
         variant={router.pathname.includes("/edit") ? "outline" : "ghost"}
         size="sm"
@@ -326,35 +326,39 @@ const TypebotNav = ({
       </Button>
       {/* <Button
         as={Link}
-        href={`/typebots/${typebotId}/theme`}
+        href={`/bots/${typebotId}/theme`}
         colorScheme={router.pathname.endsWith("theme") ? "orange" : "gray"}
         variant={router.pathname.endsWith("theme") ? "outline" : "ghost"}
         size="sm"
       >
         {t("editor.header.themeButton.label")}
       </Button> */}
-      <Button
-        as={Link}
-        href={`/typebots/${typebotId}/settings`}
-        colorScheme={router.pathname.endsWith("settings") ? "orange" : "gray"}
-        variant={router.pathname.endsWith("settings") ? "outline" : "ghost"}
-        size="sm"
-      >
-        {t("editor.header.settingsButton.label")}
-      </Button>
-      <Button
-        as={Link}
-        href={`/typebots/${typebotId}/share`}
-        colorScheme={router.pathname.endsWith("share") ? "orange" : "gray"}
-        variant={router.pathname.endsWith("share") ? "outline" : "ghost"}
-        size="sm"
-      >
-        {t("share.button.label")}
-      </Button>
-      {isResultsDisplayed && (
+      {currentUserMode === "write" && (
         <Button
           as={Link}
-          href={`/typebots/${typebotId}/results`}
+          href={`/bots/${typebotId}/settings`}
+          colorScheme={router.pathname.endsWith("settings") ? "orange" : "gray"}
+          variant={router.pathname.endsWith("settings") ? "outline" : "ghost"}
+          size="sm"
+        >
+          {t("editor.header.settingsButton.label")}
+        </Button>
+      )}
+      {currentUserMode === "write" && (
+        <Button
+          as={Link}
+          href={`/bots/${typebotId}/share`}
+          colorScheme={router.pathname.endsWith("share") ? "orange" : "gray"}
+          variant={router.pathname.endsWith("share") ? "outline" : "ghost"}
+          size="sm"
+        >
+          {t("share.button.label")}
+        </Button>
+      )}
+      {currentUserMode === "write" && isResultsDisplayed && (
+        <Button
+          as={Link}
+          href={`/bots/${typebotId}/results`}
           colorScheme={router.pathname.includes("results") ? "orange" : "gray"}
           variant={router.pathname.includes("results") ? "outline" : "ghost"}
           size="sm"

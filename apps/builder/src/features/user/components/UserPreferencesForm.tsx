@@ -140,7 +140,7 @@ export const UserPreferencesForm = () => {
         />
       </Stack>
 
-      <VideoOnboardingPopover.Root
+      {/* <VideoOnboardingPopover.Root
         type="groupTitlesAutoGeneration"
         isEnabled={user?.groupTitlesAutoGeneration?.isEnabled ?? false}
         placement="top-end"
@@ -160,7 +160,7 @@ export const UserPreferencesForm = () => {
             />
           )}
         </SwitchWithRelatedSettings>
-      </VideoOnboardingPopover.Root>
+      </VideoOnboardingPopover.Root> */}
     </Stack>
   );
 };

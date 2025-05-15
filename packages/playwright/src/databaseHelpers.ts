@@ -97,7 +97,7 @@ export const parseDefaultGroupWithBlock = (
           ...block,
         } as BlockV5,
       ].filter(isDefined) as BlockV6[],
-      title: "Group #1",
+      title: "Grupo #1",
     },
   ],
 });

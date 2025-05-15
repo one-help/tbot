@@ -77,7 +77,7 @@ const FolderButton = ({
   };
 
   const handleClick = () => {
-    router.push(`/typebots/folders/${folder.id}`);
+    router.push(`/bots/folders/${folder.id}`);
   };
 
   const handleMouseEnter = () => setMouseOverFolderId(folder.id);

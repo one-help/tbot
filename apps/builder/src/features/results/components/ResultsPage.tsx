@@ -98,7 +98,7 @@ export const ResultsPage = () => {
               variant={!isAnalytics ? "outline" : "ghost"}
               size="sm"
               href={{
-                pathname: "/typebots/[typebotId]/results",
+                pathname: "/bots/[typebotId]/results",
                 query: {
                   typebotId: publishedTypebot?.typebotId,
                   timeFilter:
@@ -120,7 +120,7 @@ export const ResultsPage = () => {
               colorScheme={isAnalytics ? "orange" : "gray"}
               variant={isAnalytics ? "outline" : "ghost"}
               href={{
-                pathname: "/typebots/[typebotId]/results/analytics",
+                pathname: "/bots/[typebotId]/results/analytics",
                 query: {
                   typebotId: publishedTypebot?.typebotId,
                   timeFilter:

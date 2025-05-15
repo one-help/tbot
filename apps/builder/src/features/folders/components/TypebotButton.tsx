@@ -7,6 +7,7 @@ import {
   useDragDistance,
 } from "@/features/graph/providers/GraphDndProvider";
 import { duplicateName } from "@/features/typebot/helpers/duplicateName";
+import { useWorkspace } from "@/features/workspace/WorkspaceProvider";
 import { isMobile } from "@/helpers/isMobile";
 import { toast } from "@/lib/toast";
 import { trpc, trpcVanilla } from "@/lib/trpc";
@@ -48,6 +49,7 @@ const TypebotButton = ({
 }: Props) => {
   const { t } = useTranslate();
   const router = useRouter();
+  const { currentUserMode } = useWorkspace();
   const [draggedTypebotDebounced] = useDebounce(draggedTypebot, 200);
   const {
     isOpen: isDeleteOpen,
@@ -67,7 +69,7 @@ const TypebotButton = ({
       toast({ description: error.message });
     },
     onSuccess: ({ typebot }) => {
-      router.push(`/typebots/${typebot.id}/edit`);
+      router.push(`/bots/${typebot.id}/edit`);
     },
   });
 
@@ -93,9 +95,7 @@ const TypebotButton = ({
   const handleTypebotClick = () => {
     if (draggedTypebotDebounced) return;
     router.push(
-      isMobile
-        ? `/typebots/${typebot.id}/results`
-        : `/typebots/${typebot.id}/edit`,
+      isMobile ? `/bots/${typebot.id}/results` : `/bots/${typebot.id}/edit`,
     );
   };
 
@@ -161,7 +161,7 @@ const TypebotButton = ({
           {t("folders.typebotButton.live")}
         </Tag>
       )}
-      {!isReadOnly && (
+      {!isReadOnly && currentUserMode === "write" && (
         <>
           <IconButton
             icon={<GripIcon />}
@@ -207,7 +207,7 @@ const TypebotButton = ({
           {typebot.name}
         </Text>
       </VStack>
-      {!isReadOnly && (
+      {!isReadOnly && currentUserMode === "write" && (
         <ConfirmModal
           message={
             <Stack spacing="4">

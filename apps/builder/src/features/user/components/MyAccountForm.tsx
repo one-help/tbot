@@ -82,7 +82,7 @@ export const MyAccountForm = () => {
             </Text>
           </Stack>
           <Button onClick={() => setIsChangeEmailModalOpen(true)}>
-            Change email
+            Mudar e-mail
           </Button>
           <ChangeEmailModal
             isOpen={isChangeEmailModalOpen}
@@ -174,14 +174,15 @@ const ChangeEmailModal = ({
       <ModalContent>
         <ModalBody py={6} gap={4} as={Stack}>
           <Text>
-            Your current email is:{" "}
+            Seu e-mail atual é:{" "}
             <Text as="span" fontWeight="bold">
               {userEmail}
             </Text>
           </Text>
           <Stack as="form" onSubmit={sendVerificationCode}>
             <Text>
-              Please enter a new email and we will send you a verification code.
+              Por favor, insira um novo e-mail e enviaremos um código de
+              verificação.
             </Text>
             <Input
               type="email"
@@ -197,7 +198,7 @@ const ChangeEmailModal = ({
                 isDisabled={newEmail.length === 0}
                 isLoading={verificationCodeStatus === "sending"}
               >
-                Send verification code
+                Enviar código de verificação
               </Button>
             )}
           </Stack>
@@ -213,7 +214,7 @@ const ChangeEmailModal = ({
               <Input
                 value={verificationCode}
                 onChange={(e) => setVerificationCode(e.target.value)}
-                placeholder="Enter verification code"
+                placeholder="Código de verificação"
               />
               <Button
                 type="submit"
@@ -221,7 +222,7 @@ const ChangeEmailModal = ({
                 isDisabled={verificationCode.length === 0}
                 isLoading={isUpdatingEmail}
               >
-                Change email
+                Mudar e-mail
               </Button>
             </Stack>
           )}

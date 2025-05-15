@@ -68,7 +68,7 @@ const groupsActions = (setTypebot: SetTypebot): GroupsActions => ({
         const newGroup: GroupV6 = {
           id,
           graphCoordinates,
-          title: `${groupLabel ?? "Group"} #${typebot.groups.length + 1}`,
+          title: `${groupLabel ?? "Grupo"} #${typebot.groups.length + 1}`,
           blocks: [],
         };
         typebot.groups.push(newGroup);
