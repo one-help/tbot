@@ -13,7 +13,7 @@ export const ThemePage = () => {
   if (is404) return <TypebotNotFoundPage />;
   return (
     <Flex overflow="hidden" h="100vh" flexDir="column">
-      <Seo title={typebot?.name ? `${typebot.name} | Theme` : "Theme"} />
+      <Seo title={typebot?.name ? `${typebot.name} | Tema` : "Tema"} />
       <TypebotHeader />
       <HStack w="full" height={`calc(100vh - ${headerHeight}px)`} spacing={4}>
         <ThemeSideMenu />

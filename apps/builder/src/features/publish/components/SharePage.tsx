@@ -92,7 +92,11 @@ export const SharePage = () => {
   if (is404) return <TypebotNotFoundPage />;
   return (
     <Flex flexDir="column" pb="40">
-      <Seo title={typebot?.name ? `${typebot.name} | Share` : "Share"} />
+      <Seo
+        title={
+          typebot?.name ? `${typebot.name} | Compartilhar` : "Compartilhar"
+        }
+      />
       <TypebotHeader />
       <Flex h="full" w="full" justifyContent="center" align="flex-start">
         <Stack maxW="970px" w="full" pt="10" spacing={10}>

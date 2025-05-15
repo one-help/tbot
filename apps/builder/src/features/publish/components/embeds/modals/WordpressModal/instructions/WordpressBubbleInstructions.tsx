@@ -76,7 +76,7 @@ export const WordpressBubbleInstructions = ({ publicId }: Props) => {
             onThemeChange={setTheme}
           />
           <Text>
-            You can now place the following code snippet in the Typebot panel in
+            You can now place the following code snippet in the Bot panel in
             your WordPress admin:
           </Text>
           <CodeEditor value={initCode} lang="javascript" isReadOnly />

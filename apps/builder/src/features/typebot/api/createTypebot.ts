@@ -137,7 +137,7 @@ export const createTypebot = authenticatedProcedure
 
     await trackEvents([
       {
-        name: "Typebot created",
+        name: "Bot created",
         workspaceId: parsedNewTypebot.workspaceId,
         typebotId: parsedNewTypebot.id,
         userId: user.id,

@@ -32,20 +32,21 @@ interface Props {
 export const LoginCodeEmail = ({ url, code }: Props) => (
   <Html>
     <Head />
-    <Preview>Your login code for Typebot</Preview>
+    <Preview>Seu código de login para OneHelp</Preview>
     <Body style={main}>
       <Container style={container}>
         <Logo />
-        <Heading style={heading}>Your login code for Typebot</Heading>
+        <Heading style={heading}>Seu código de login para OneHelp</Heading>
         <code style={codeStyle}>{code}</code>
         <Text style={paragraph}>
-          This code will only be valid for the next 5 minutes.
+          Este código é válido por 5 minutos. Se você não solicitou este código,
+          não se preocupe, ele não pode ser usado por ninguém além de você.
         </Text>
         <Text style={paragraph}>
-          You can also sign in by <Link href={url}>clicking here</Link>.
+          Você também pode se logar <Link href={url}>clicando aqui</Link>.
         </Text>
         <Hr style={hr} />
-        <Text style={footerText}>Typebot - Build faster, Chat smarter</Text>
+        <Text style={footerText}>Bots da OneHelp</Text>
       </Container>
     </Body>
   </Html>
@@ -64,6 +65,6 @@ export const sendLoginCodeEmail = async ({
 }: Pick<SendMailOptions, "to"> & ComponentProps<typeof LoginCodeEmail>) =>
   sendEmail({
     to,
-    subject: "Sign in to Typebot",
+    subject: "Seu código de login para OneHelp",
     html: await render(<LoginCodeEmail {...props} />),
   });

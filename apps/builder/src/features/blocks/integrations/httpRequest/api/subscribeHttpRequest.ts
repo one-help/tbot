@@ -43,7 +43,7 @@ export const subscribeHttpRequest = authenticatedProcedure
     });
 
     if (!typebot)
-      throw new TRPCError({ code: "NOT_FOUND", message: "Typebot not found" });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Bot not found" });
 
     const groups = parseGroups(typebot.groups, {
       typebotVersion: typebot.version,

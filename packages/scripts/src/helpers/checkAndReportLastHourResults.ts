@@ -390,7 +390,7 @@ async function sendLimitWarningEmails({
       await sendReachedChatsLimitEmail({
         to,
         chatsLimit: limit,
-        url: `${process.env.NEXTAUTH_URL}/typebots?workspaceId=${workspace.id}`,
+        url: `${process.env.NEXTAUTH_URL}/bots?workspaceId=${workspace.id}`,
       });
       emailEvents.push(
         ...adminMembers.map(

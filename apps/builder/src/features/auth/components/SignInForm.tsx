@@ -152,7 +152,7 @@ export const SignInForm = ({
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="email@company.com"
+                  placeholder="seuemail@empresa.com"
                   required
                   value={emailValue}
                   onChange={handleEmailChange}
@@ -164,7 +164,7 @@ export const SignInForm = ({
                   }
                   isDisabled={isMagicCodeSent}
                 >
-                  {t("auth.emailSubmitButton.label")}
+                  Entrar
                 </Button>
               </HStack>
             </>
@@ -183,7 +183,7 @@ export const SignInForm = ({
             </HStack>
           </Alert>
           <FormControl as={VStack} spacing={0}>
-            <FormLabel>Login code:</FormLabel>
+            <FormLabel>Código de login:</FormLabel>
             <HStack>
               <PinInput onComplete={redirectToMagicLink}>
                 <PinInputField />

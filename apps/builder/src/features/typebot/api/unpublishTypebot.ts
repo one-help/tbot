@@ -60,7 +60,7 @@ export const unpublishTypebot = authenticatedProcedure
       !existingTypebot.id ||
       (await isWriteTypebotForbidden(existingTypebot, user))
     )
-      throw new TRPCError({ code: "NOT_FOUND", message: "Typebot not found" });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Bot not found" });
 
     await prisma.publicTypebot.deleteMany({
       where: {

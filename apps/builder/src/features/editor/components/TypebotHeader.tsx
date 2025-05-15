@@ -64,7 +64,7 @@ export const TypebotHeader = () => {
       bgColor={headerBgColor}
       flexShrink={0}
     >
-      {isOpen && <SupportBubble autoShowDelay={0} />}
+      {/* {isOpen && <SupportBubble autoShowDelay={0} />} */}
       <LeftElements pos="absolute" left="1rem" onHelpClick={handleHelpClick} />
       <TypebotNav
         display={{ base: "none", xl: "flex" }}
@@ -253,9 +253,10 @@ const RightElements = ({
 }: StackProps & { isResultsDisplayed: boolean }) => {
   const router = useRouter();
   const { t } = useTranslate();
-  const { typebot, currentUserMode, save, isSavingLoading } = useTypebot();
+  const { typebot, save, isSavingLoading } = useTypebot();
   const { setStartPreviewFrom } = useEditor();
   const [rightPanel, setRightPanel] = useRightPanel();
+  const { currentUserMode } = useWorkspace();
 
   const handlePreviewClick = async () => {
     setStartPreviewFrom(undefined);
@@ -263,11 +264,12 @@ const RightElements = ({
     setRightPanel("preview");
   };
 
+  if (currentUserMode !== "write") return <></>;
+
   return (
     <HStack {...props}>
       <TypebotNav
         display={{ base: "none", md: "flex", xl: "none" }}
-        currentUserMode={currentUserMode}
         typebotId={typebot?.id}
         isResultsDisplayed={isResultsDisplayed}
       />
@@ -288,7 +290,7 @@ const RightElements = ({
           </chakra.span>
         </Button>
       )}
-      {currentUserMode === "guest" && (
+      {/* {currentUserMode === "guest" && (
         <Button
           as={Link}
           href={`/bots/${typebot?.id}/duplicate`}
@@ -298,7 +300,7 @@ const RightElements = ({
         >
           Duplicar
         </Button>
-      )}
+      )} */}
       {currentUserMode === "write" && <PublishButton size="sm" />}
     </HStack>
   );
@@ -307,10 +309,8 @@ const RightElements = ({
 const TypebotNav = ({
   typebotId,
   isResultsDisplayed,
-  currentUserMode,
   ...stackProps
 }: {
-  currentUserMode?: string;
   typebotId?: string;
   isResultsDisplayed: boolean;
 } & StackProps) => {
@@ -337,39 +337,33 @@ const TypebotNav = ({
       >
         {t("editor.header.themeButton.label")}
       </Button> */}
-      {currentUserMode === "write" && (
-        <Button
-          as={Link}
-          href={`/bots/${typebotId}/settings`}
-          colorScheme={router.pathname.endsWith("settings") ? "orange" : "gray"}
-          variant={router.pathname.endsWith("settings") ? "outline" : "ghost"}
-          size="sm"
-        >
-          {t("editor.header.settingsButton.label")}
-        </Button>
-      )}
-      {currentUserMode === "write" && (
-        <Button
-          as={Link}
-          href={`/bots/${typebotId}/share`}
-          colorScheme={router.pathname.endsWith("share") ? "orange" : "gray"}
-          variant={router.pathname.endsWith("share") ? "outline" : "ghost"}
-          size="sm"
-        >
-          {t("share.button.label")}
-        </Button>
-      )}
-      {currentUserMode === "write" && isResultsDisplayed && (
-        <Button
-          as={Link}
-          href={`/bots/${typebotId}/results`}
-          colorScheme={router.pathname.includes("results") ? "orange" : "gray"}
-          variant={router.pathname.includes("results") ? "outline" : "ghost"}
-          size="sm"
-        >
-          {t("editor.header.resultsButton.label")}
-        </Button>
-      )}
+      <Button
+        as={Link}
+        href={`/bots/${typebotId}/settings`}
+        colorScheme={router.pathname.endsWith("settings") ? "orange" : "gray"}
+        variant={router.pathname.endsWith("settings") ? "outline" : "ghost"}
+        size="sm"
+      >
+        {t("editor.header.settingsButton.label")}
+      </Button>
+      <Button
+        as={Link}
+        href={`/bots/${typebotId}/share`}
+        colorScheme={router.pathname.endsWith("share") ? "orange" : "gray"}
+        variant={router.pathname.endsWith("share") ? "outline" : "ghost"}
+        size="sm"
+      >
+        {t("share.button.label")}
+      </Button>
+      <Button
+        as={Link}
+        href={`/bots/${typebotId}/results`}
+        colorScheme={router.pathname.includes("results") ? "orange" : "gray"}
+        variant={router.pathname.includes("results") ? "outline" : "ghost"}
+        size="sm"
+      >
+        {t("editor.header.resultsButton.label")}
+      </Button>
     </HStack>
   );
 };

@@ -40,7 +40,7 @@ export const PublishButton = ({
   ...props
 }: Props) => {
   const { t } = useTranslate();
-  const { workspace } = useWorkspace();
+  const { workspace, currentUserMode: cum } = useWorkspace();
   const { push, query, pathname } = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
@@ -135,6 +135,7 @@ export const PublishButton = ({
     await updateTypebot({ updates: { isClosed: false }, save: true });
   };
 
+  if (cum !== "write") return <></>;
   return (
     <HStack spacing="1px">
       <ChangePlanModal

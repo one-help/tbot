@@ -13,7 +13,11 @@ export const SettingsPage = () => {
   if (is404) return <TypebotNotFoundPage />;
   return (
     <Flex overflow="hidden" h="100vh" flexDir="column">
-      <Seo title={typebot?.name ? `${typebot.name} | Settings` : "Settings"} />
+      <Seo
+        title={
+          typebot?.name ? `${typebot.name} | Configurações` : "Configurações"
+        }
+      />
       <TypebotHeader />
       <HStack w="full" height={`calc(100vh - ${headerHeight}px)`} spacing={4}>
         <SettingsSideMenu />

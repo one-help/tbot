@@ -84,7 +84,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       await sendGuestInvitationEmail({
         to: email,
         hostEmail: user.email ?? "",
-        url: `${env.NEXTAUTH_URL}/typebots?workspaceId=${typebot.workspaceId}`,
+        url: `${env.NEXTAUTH_URL}/bots?workspaceId=${typebot.workspaceId}`,
         guestEmail: email.toLowerCase(),
         botName: typebot.name,
         workspaceName: typebot.workspace?.name ?? "",

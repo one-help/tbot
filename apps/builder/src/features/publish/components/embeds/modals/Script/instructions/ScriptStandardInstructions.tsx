@@ -42,7 +42,7 @@ ${parseInitStandardCode({
         <Code>{"<body>"}</Code>:
       </Text>
       <CodeEditor isReadOnly value={standardElementSnippet} lang="html" />
-      <Text>Then, run this script to initialize the typebot:</Text>
+      <Text>Then, run this script to initialize the bot:</Text>
       <CodeEditor isReadOnly value={scriptSnippet} lang="javascript" />
     </Stack>
   );

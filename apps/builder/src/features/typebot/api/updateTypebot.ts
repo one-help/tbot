@@ -113,7 +113,7 @@ export const updateTypebot = authenticatedProcedure
     )
       throw new TRPCError({
         code: "NOT_FOUND",
-        message: "Typebot not found",
+        message: "Bot not found",
       });
 
     if (

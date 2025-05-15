@@ -32,7 +32,7 @@ export const EmailRedirectPage = () => {
 
   return (
     <VStack h="100vh" justifyContent="center">
-      <Seo title={"Email auth confirmation"} />
+      <Seo title={"Confirmação de login por e-mail"} />
       <Stack bg={bgColor} p={10} borderRadius={8} borderWidth={1} spacing={6}>
         <Stack spacing={4}>
           <Heading
@@ -40,14 +40,14 @@ export const EmailRedirectPage = () => {
               throw new Error("Sentry is working");
             }}
           >
-            Email authentication
+            Autenticação por e-mail
           </Heading>
           <Text>
-            You are about to login with <Tag>{email}</Tag>
+            Você está logando com o e-mail <Tag>{email}</Tag>
           </Text>
         </Stack>
         <Button onClick={redirectToMagicLink} colorScheme="orange">
-          Continue
+          Continuar
         </Button>
       </Stack>
     </VStack>

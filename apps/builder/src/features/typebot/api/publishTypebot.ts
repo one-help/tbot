@@ -76,7 +76,7 @@ export const publishTypebot = authenticatedProcedure
       !existingTypebot?.id ||
       (await isWriteTypebotForbidden(existingTypebot, user))
     )
-      throw new TRPCError({ code: "NOT_FOUND", message: "Typebot not found" });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Bot not found" });
 
     const hasFileUploadBlocks = parseGroups(existingTypebot.groups, {
       typebotVersion: existingTypebot.version,
@@ -116,7 +116,7 @@ export const publishTypebot = authenticatedProcedure
     if (riskLevel > 0 && riskLevel !== existingTypebot.riskLevel) {
       if (riskLevel !== 100 && riskLevel > 60)
         await sendMessage(
-          `⚠️ Suspicious bot to be reviewed: ${existingTypebot.name} (${env.NEXTAUTH_URL}/typebots/${existingTypebot.id}/edit) (workspace: ${existingTypebot.workspaceId})`,
+          `⚠️ Suspicious bot to be reviewed: ${existingTypebot.name} (${env.NEXTAUTH_URL}/bots/${existingTypebot.id}/edit) (workspace: ${existingTypebot.workspaceId})`,
         );
 
       await prisma.typebot.updateMany({
@@ -189,7 +189,7 @@ export const publishTypebot = authenticatedProcedure
         },
       });
       publishEvents.push({
-        name: "Typebot published",
+        name: "Bot published",
         workspaceId: existingTypebot.workspaceId,
         typebotId: existingTypebot.id,
         userId: user.id,
