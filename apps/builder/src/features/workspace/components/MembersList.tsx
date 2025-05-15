@@ -110,7 +110,11 @@ export const MembersList = () => {
       {isDefined(seatsLimit) && (
         <Heading fontSize="2xl">
           {t("workspace.membersList.title")}{" "}
-          {seatsLimit === -1 ? "" : `(${currentMembersCount}/${seatsLimit})`}
+          {seatsLimit == "inf"
+            ? ""
+            : seatsLimit === -1
+              ? ""
+              : `(${currentMembersCount}/${seatsLimit})`}
         </Heading>
       )}
       {workspace?.id && currentUserMode === "write" && (

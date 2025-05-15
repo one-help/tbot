@@ -5,6 +5,7 @@ import {
   SettingsIcon,
   TrashIcon,
 } from "@/components/icons";
+import { useWorkspace } from "@/features/workspace/WorkspaceProvider";
 import { isMac } from "@/helpers/isMac";
 import {
   HStack,
@@ -29,6 +30,7 @@ export const EventFocusToolbar = ({
   onSettingsClick,
 }: Props) => {
   const { hasCopied, onCopy } = useClipboard(eventId);
+  const { currentUserMode } = useWorkspace();
 
   const dispatchCopyEvent = () => {
     if (type === EventType.START) return;
@@ -53,15 +55,17 @@ export const EventFocusToolbar = ({
       bgColor={useColorModeValue("white", "gray.900")}
       shadow="md"
     >
-      <IconButton
-        icon={<PlayIcon />}
-        borderRightWidth="1px"
-        borderRightRadius="none"
-        aria-label={"Preview bot from this group"}
-        variant="ghost"
-        onClick={onPlayClick}
-        size="sm"
-      />
+      {currentUserMode === "write" && (
+        <IconButton
+          icon={<PlayIcon />}
+          borderRightWidth="1px"
+          borderRightRadius="none"
+          aria-label={"Preview bot from this group"}
+          variant="ghost"
+          onClick={onPlayClick}
+          size="sm"
+        />
+      )}
       <IconButton
         icon={<SettingsIcon />}
         aria-label={"Show event settings"}
@@ -85,7 +89,7 @@ export const EventFocusToolbar = ({
         />
       )}
       <Tooltip
-        label={hasCopied ? "Copied!" : eventId}
+        label={hasCopied ? "Copiado!" : eventId}
         closeOnClick={false}
         placement="top"
       >

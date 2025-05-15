@@ -137,7 +137,7 @@ export const DrawingEdge = ({ connectingIds }: Props) => {
         (g) => g.id === (connectingIds.source as { groupId: string }).groupId,
       );
       const group = typebot.groups[groupIndex];
-      if (!group || !group?.title.startsWith("Group #")) return;
+      if (!group || !group?.title.startsWith("Grupo #")) return;
       try {
         const result = await trpcVanilla.generateGroupTitle.mutate({
           credentialsId: groupTitlesAutoGeneration.credentialsId,
