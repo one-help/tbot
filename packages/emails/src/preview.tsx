@@ -21,7 +21,7 @@ const createHtmlFile = () => {
     render(
       <GuestInvitationEmail
         workspaceName={"Typebot"}
-        typebotName={"Lead Generation"}
+        botName={"Lead Generation"}
         url={"https://app.typebot.io"}
         hostEmail={"host@typebot.io"}
         guestEmail={"guest@typebot.io"}

@@ -128,7 +128,7 @@ export const SettingsSideMenu = () => {
               <MetadataForm
                 workspaceId={typebot.workspaceId}
                 typebotId={typebot.id}
-                typebotName={typebot.name}
+                botName={typebot.name}
                 metadata={typebot.settings.metadata}
                 onMetadataChange={handleMetadataChange}
               />

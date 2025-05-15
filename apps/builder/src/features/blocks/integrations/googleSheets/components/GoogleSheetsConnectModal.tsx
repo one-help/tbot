@@ -66,7 +66,7 @@ export const GoogleSheetConnectModalContent = ({
         <AlertInfo>
           Google does not provide more granular permissions than
           &quot;read&quot; or &quot;write&quot; access. That&apos;s why it
-          states that Typebot can also delete your spreadsheets which it
+          states that bot can also delete your spreadsheets which it
           won&apos;t.
         </AlertInfo>
         <Flex>

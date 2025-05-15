@@ -9,14 +9,14 @@ import React from "react";
 
 type SEOProps = {
   url: string;
-  typebotName: string;
+  botName: string;
   isMatchingViewerUrl?: boolean;
   metadata?: Settings["metadata"];
 };
 
 export const SEO = ({
   url,
-  typebotName,
+  botName,
   isMatchingViewerUrl,
   metadata: {
     title,
@@ -28,7 +28,7 @@ export const SEO = ({
 }: SEOProps) => (
   <>
     <Head key="seo">
-      <title>{title ?? typebotName}</title>
+      <title>{title ?? botName}</title>
       {isMatchingViewerUrl ? <meta name="robots" content="noindex" /> : null}
       <link
         rel="icon"
@@ -38,7 +38,7 @@ export const SEO = ({
           defaultSettings.metadata.favIconUrl(env.NEXT_PUBLIC_VIEWER_URL[0])
         }
       />
-      <meta name="title" content={title ?? typebotName} />
+      <meta name="title" content={title ?? botName} />
       <meta
         name="description"
         content={
@@ -49,8 +49,8 @@ export const SEO = ({
 
       <meta property="og:type" content="website" />
       <meta property="og:url" content={url ?? "https://bot.typebot.io"} />
-      <meta property="og:title" content={title ?? typebotName} />
-      <meta property="og:site_name" content={title ?? typebotName} />
+      <meta property="og:title" content={title ?? botName} />
+      <meta property="og:site_name" content={title ?? botName} />
       <meta
         property="og:description"
         content={
@@ -69,7 +69,7 @@ export const SEO = ({
 
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={url ?? "https://bot.typebot.io"} />
-      <meta property="twitter:title" content={title ?? typebotName} />
+      <meta property="twitter:title" content={title ?? botName} />
       <meta
         property="twitter:description"
         content={

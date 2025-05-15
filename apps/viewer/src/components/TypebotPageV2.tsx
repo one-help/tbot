@@ -141,7 +141,7 @@ export const TypebotPageV2 = ({
     <div style={{ height: "100vh" }}>
       <SEO
         url={url}
-        typebotName={publishedTypebot.typebot.name}
+        botName={publishedTypebot.typebot.name}
         metadata={publishedTypebot.settings.metadata}
       />
       {showTypebot && (

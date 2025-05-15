@@ -316,7 +316,7 @@
   "folders.createTypebotButton.label": "Δημιουργία typebot",
   "folders.folderButton.deleteConfirmationMessage": "Είστε σίγουροι ότι θέλετε να διαγράψετε το φάκελο <strong>folderName</strong>; (Τα πάντα μέσα σε αυτόν θα μεταφερθούν στο ταμπλό σας)",
   "folders.typebotButton.delete": "Διαγραφή",
-  "folders.typebotButton.deleteConfirmationMessage": "Είστε σίγουροι ότι θέλετε να διαγράψετε το typebot <strong>typebotName</strong>;",
+  "folders.typebotButton.deleteConfirmationMessage": "Είστε σίγουροι ότι θέλετε να διαγράψετε το typebot <strong>botName</strong>;",
   "folders.typebotButton.deleteConfirmationMessageWarning": "Όλα τα σχετικά δεδομένα θα διαγραφούν και δεν θα μπορούν να ανακτηθούν.",
   "folders.typebotButton.duplicate": "Διπλότυπο",
   "folders.typebotButton.live": "Ζωντανά",

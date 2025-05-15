@@ -12,7 +12,7 @@ type EditableProps = {
   defaultName: string;
   onNewName: (newName: string) => void;
 };
-export const EditableTypebotName = ({
+export const EditablebotName = ({
   defaultName,
   onNewName,
 }: EditableProps) => {

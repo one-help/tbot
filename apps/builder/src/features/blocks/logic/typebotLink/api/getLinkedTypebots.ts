@@ -80,7 +80,7 @@ export const getLinkedTypebots = authenticatedProcedure
     });
 
     if (!typebot || (await isReadTypebotForbidden(typebot, user)))
-      throw new TRPCError({ code: "NOT_FOUND", message: "No typebot found" });
+      throw new TRPCError({ code: "NOT_FOUND", message: "No bot found" });
 
     const linkedTypebotIds =
       parseGroups(typebot.groups, { typebotVersion: typebot.version })

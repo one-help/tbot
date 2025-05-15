@@ -37,7 +37,7 @@ import { useDebouncedCallback } from "use-debounce";
 import { headerHeight } from "../constants";
 import { useEditor } from "../providers/EditorProvider";
 import { useTypebot } from "../providers/TypebotProvider";
-import { EditableTypebotName } from "./EditableTypebotName";
+import { EditablebotName } from "./EditablebotName";
 import { GuestTypebotHeader } from "./UnauthenticatedTypebotHeader";
 
 export const TypebotHeader = () => {
@@ -174,7 +174,7 @@ const LeftElements = ({
             />
           )}
           (
-          <EditableTypebotName
+          <EditablebotName
             key={`typebot-name-${typebot?.name ?? ""}`}
             defaultName={typebot?.name ?? ""}
             onNewName={handleNameSubmit}

@@ -122,7 +122,7 @@ export const updateTypebot = authenticatedProcedure
     )
       throw new TRPCError({
         code: "CONFLICT",
-        message: "Found newer version of the typebot in database",
+        message: "Found newer version of the bot in database",
       });
 
     if (

@@ -18,7 +18,7 @@ import { sendEmail } from "../sendEmail";
 
 type GuestInvitationEmailProps = {
   workspaceName: string;
-  typebotName: string;
+  botName: string;
   url: string;
   hostEmail: string;
   guestEmail: string;
@@ -26,7 +26,7 @@ type GuestInvitationEmailProps = {
 
 export const GuestInvitationEmail = ({
   workspaceName,
-  typebotName,
+  botName,
   url,
   hostEmail,
   guestEmail,
@@ -42,18 +42,17 @@ export const GuestInvitationEmail = ({
       <MjmlSection padding="0 24px" cssClass="smooth">
         <MjmlColumn>
           <Text>
-            You have been invited by {hostEmail} to collaborate on his typebot{" "}
-            <strong>{typebotName}</strong>.
+            Você foi convidado pelo e-mal {hostEmail} para participar do desenvolvimento de um bot{" "}
+            <strong>{botName}</strong>.
           </Text>
           <Text>
-            From now on you will see this typebot in your dashboard under his
-            workspace &quot;{workspaceName}&quot; 👍
+            Navegue pelo bot no seu dashboard: &quot;{workspaceName}&quot; 👍
           </Text>
           <Text>
-            Make sure to log in as <i>{guestEmail}</i>.
+            Tenha certeza de logar com o e-mail: <i>{guestEmail}</i>.
           </Text>
           <MjmlSpacer height="24px" />
-          <Button link={url}>Go to typebot</Button>
+          <Button link={url}>Ver bot</Button>
         </MjmlColumn>
       </MjmlSection>
     </MjmlBody>
@@ -67,6 +66,6 @@ export const sendGuestInvitationEmail = ({
   sendEmail({
     to,
     replyTo: props.hostEmail,
-    subject: "You've been invited to collaborate 🤝",
+    subject: "Você foi convidado para um bot 🤝",
     html: render(<GuestInvitationEmail {...props} />).html,
   });

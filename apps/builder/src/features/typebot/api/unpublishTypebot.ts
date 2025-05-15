@@ -53,7 +53,7 @@ export const unpublishTypebot = authenticatedProcedure
     if (!existingTypebot?.publishedTypebot)
       throw new TRPCError({
         code: "NOT_FOUND",
-        message: "Published typebot not found",
+        message: "Published bot not found",
       });
 
     if (

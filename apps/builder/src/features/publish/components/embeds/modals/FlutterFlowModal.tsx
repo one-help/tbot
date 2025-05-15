@@ -46,7 +46,7 @@ export const FlutterFlowModal = ({
             <ListItem>
               <Stack>
                 <Text>
-                  As the <Code>Webview URL</Code>, paste your typebot URL
+                  As the <Code>Webview URL</Code>, paste your bot URL
                 </Text>
                 <InputGroup size="sm">
                   <Input

@@ -127,7 +127,7 @@ export const generateGroupTitle = authenticatedProcedure
           title: z.string(),
         }),
         prompt: (prompt ?? defaultGroupTitleGenPrompt)
-          .replace("[[typebotName]]", typebot.name)
+          .replace("[[botName]]", typebot.name)
           .replace("[[groupContent]]", groupContent),
       });
 

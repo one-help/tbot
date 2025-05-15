@@ -33,7 +33,7 @@ export const getPublishedTypebot = authenticatedProcedure
         .optional()
         .default(false)
         .describe(
-          "If enabled, the typebot will be converted to the latest schema version",
+          "If enabled, the bot will be converted to the latest schema version",
         ),
     }),
   )

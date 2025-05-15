@@ -21,7 +21,7 @@ import React from "react";
 type Props = {
   workspaceId: string;
   typebotId: string;
-  typebotName: string;
+  botName: string;
   metadata: Settings["metadata"];
   onMetadataChange: (metadata: Settings["metadata"]) => void;
 };
@@ -29,7 +29,7 @@ type Props = {
 export const MetadataForm = ({
   workspaceId,
   typebotId,
-  typebotName,
+  botName,
   metadata,
   onMetadataChange,
 }: Props) => {
@@ -123,7 +123,7 @@ export const MetadataForm = ({
       </Stack>
       <TextInput
         label={t("settings.sideMenu.metadata.title.label")}
-        defaultValue={metadata?.title ?? typebotName}
+        defaultValue={metadata?.title ?? botName}
         onChange={handleTitleChange}
       />
       <Textarea

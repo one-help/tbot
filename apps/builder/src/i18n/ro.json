@@ -200,7 +200,7 @@
   "folders.createTypebotButton.label": "Creați un typebot",
   "folders.folderButton.deleteConfirmationMessage": "Sigur doriți să ștergeți dosarul <strong>folderName</strong>? (Totul din interior va fi mutat în tabloul de bord)",
   "folders.typebotButton.delete": "Șterge",
-  "folders.typebotButton.deleteConfirmationMessage": "Sigur doriți să ștergeți <strong>typebotName</strong> de typebot?",
+  "folders.typebotButton.deleteConfirmationMessage": "Sigur doriți să ștergeți <strong>botName</strong> de typebot?",
   "folders.typebotButton.deleteConfirmationMessageWarning": "Toate datele asociate acesteia vor fi șterse și nu vor fi recuperate.",
   "folders.typebotButton.duplicate": "Duplicat",
   "folders.typebotButton.live": "Trăi",
