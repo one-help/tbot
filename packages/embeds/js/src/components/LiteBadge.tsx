@@ -91,18 +91,5 @@ export const LiteBadge = (props: Props) => {
     if (attributeObserver) attributeObserver.disconnect();
   });
 
-  return (
-    <a
-      ref={liteBadge}
-      href={"https://www.typebot.io/?utm_source=litebadge"}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="lite-badge"
-      id="lite-badge"
-      style={defaultStyles}
-    >
-      <TypebotLogo />
-      <span>Made with Typebot</span>
-    </a>
-  );
+  return <></>;
 };

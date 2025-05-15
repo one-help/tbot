@@ -324,7 +324,7 @@ const TypebotNav = ({
       >
         {t("editor.header.flowButton.label")}
       </Button>
-      <Button
+      {/* <Button
         as={Link}
         href={`/typebots/${typebotId}/theme`}
         colorScheme={router.pathname.endsWith("theme") ? "orange" : "gray"}
@@ -332,7 +332,7 @@ const TypebotNav = ({
         size="sm"
       >
         {t("editor.header.themeButton.label")}
-      </Button>
+      </Button> */}
       <Button
         as={Link}
         href={`/typebots/${typebotId}/settings`}
