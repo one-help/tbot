@@ -223,7 +223,7 @@ const LeftElements = ({
             </Tooltip>
           </HStack>
         )}
-        <Button
+        {/* <Button
           leftIcon={<BuoyIcon />}
           onClick={onHelpClick}
           size="sm"
@@ -232,7 +232,7 @@ const LeftElements = ({
           <chakra.span display={{ base: "none", xl: "inline" }}>
             {t("editor.header.helpButton.label")}
           </chakra.span>
-        </Button>
+        </Button> */}
       </HStack>
       {isSavingLoading && (
         <HStack>
@@ -294,7 +294,7 @@ const RightElements = ({
           isLoading={isNotDefined(typebot)}
           size="sm"
         >
-          Duplicate
+          Duplicar
         </Button>
       )}
       {currentUserMode === "write" && <PublishButton size="sm" />}
