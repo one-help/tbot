@@ -71,7 +71,6 @@ export const TypebotHeader = () => {
         pos={{ base: "absolute" }}
         typebotId={typebot?.id}
         isResultsDisplayed={isDefined(publishedTypebot)}
-        currentUserMode={currentUserMode}
       />
       <RightElements
         right="40px"
