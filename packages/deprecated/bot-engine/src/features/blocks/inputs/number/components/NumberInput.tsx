@@ -50,7 +50,7 @@ export const NumberInput = ({
         ref={inputRef as MutableRefObject<HTMLInputElement>}
         value={inputValue}
         placeholder={
-          block.options?.labels?.placeholder ?? "Type your answer..."
+          block.options?.labels?.placeholder ?? "Digite sua resposta..."
         }
         onChange={handleChange}
         type="number"

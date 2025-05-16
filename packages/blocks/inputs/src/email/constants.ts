@@ -4,7 +4,7 @@ import type { EmailInputBlock } from "./schema";
 export const defaultEmailInputOptions = {
   labels: {
     button: defaultButtonLabel,
-    placeholder: "Type your email...",
+    placeholder: "Digite seu e-mail...",
   },
   retryMessageContent:
     "This email doesn't seem to be valid. Can you type it again?",

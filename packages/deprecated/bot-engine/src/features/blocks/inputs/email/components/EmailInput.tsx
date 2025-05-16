@@ -49,7 +49,9 @@ export const EmailInput = ({
       <ShortTextInput
         ref={inputRef as MutableRefObject<HTMLInputElement>}
         value={inputValue}
-        placeholder={block.options?.labels?.placeholder ?? "Type your email..."}
+        placeholder={
+          block.options?.labels?.placeholder ?? "Digite seu email..."
+        }
         onChange={handleChange}
         type="email"
         autoComplete="email"

@@ -55,7 +55,7 @@ export const UrlInput = ({
       <ShortTextInput
         ref={inputRef as MutableRefObject<HTMLInputElement>}
         value={inputValue}
-        placeholder={block.options?.labels?.placeholder ?? "Type your URL..."}
+        placeholder={block.options?.labels?.placeholder ?? "Digite sua URL..."}
         onChange={handleChange}
         type="url"
         autoComplete="url"

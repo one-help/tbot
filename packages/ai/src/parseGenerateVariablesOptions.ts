@@ -76,7 +76,7 @@ export const parseGenerateVariablesOptions = ({ models }: Props) =>
     }),
     prompt: option.string.layout({
       label: "Prompt",
-      placeholder: "Type your text here",
+      placeholder: "Digite seu texto aqui...",
       inputType: "textarea",
       isRequired: true,
       moreInfoTooltip:
