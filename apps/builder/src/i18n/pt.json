@@ -158,7 +158,7 @@
   "customDomain.modal.value": "Valor",
   "customDomain.modal.warningMessage": "Dependendo do seu provedor, pode levar algum tempo para as mudanças serem aplicadas",
   "customDomain.remove": "Remover domínio",
-  "dashboard.header.settingsButton.label": "Configurações & Membros",
+  "dashboard.header.settingsButton.label": "Configurações",
   "dashboard.redirectionMessage": "Está a ser redirecionado...",
   "dashboard.title": "Os meus typebots",
   "delete": "Apagar",

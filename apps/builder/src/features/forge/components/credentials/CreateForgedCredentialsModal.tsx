@@ -116,10 +116,10 @@ export const CreateForgedCredentialsModalContent = ({
       <form onSubmit={createOpenAICredentials}>
         <ModalBody as={Stack} spacing="6">
           <TextInput
-            label="Label"
-            moreInfoTooltip={`Choose a name to identify this ${blockDef.auth.name}`}
+            label="Nome de identificação"
+            moreInfoTooltip={`Escolha um nome para identificar: ${blockDef.auth.name}`}
             onChange={setName}
-            placeholder="My account"
+            placeholder="Minha conta"
             withVariableButton={false}
             debounceTimeout={0}
           />
@@ -137,7 +137,7 @@ export const CreateForgedCredentialsModalContent = ({
             isDisabled={Object.keys(data).length === 0}
             colorScheme="orange"
           >
-            Create
+            Criar
           </Button>
         </ModalFooter>
       </form>

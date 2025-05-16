@@ -104,17 +104,17 @@ export const UpdateForgedCredentialsModalContent = ({
 
   return (
     <ModalContent>
-      <ModalHeader>Update {blockDef.auth.name}</ModalHeader>
+      <ModalHeader>Atualizando {blockDef.auth.name}</ModalHeader>
       <ModalCloseButton />
       <form onSubmit={updateCredentials}>
         <ModalBody as={Stack} spacing="6">
           <TextInput
             isRequired
-            label="Label"
-            moreInfoTooltip={`Choose a name to identify this ${blockDef.auth.name}`}
+            label="Nome de identificação"
+            moreInfoTooltip={`Escolha um nome para identificar: ${blockDef.auth.name}`}
             defaultValue={name}
             onChange={setName}
-            placeholder="My account"
+            placeholder="Minha conta"
             withVariableButton={false}
             debounceTimeout={0}
           />
@@ -134,7 +134,7 @@ export const UpdateForgedCredentialsModalContent = ({
             isDisabled={!data || Object.keys(data).length === 0}
             colorScheme="orange"
           >
-            Update
+            Atualizar
           </Button>
         </ModalFooter>
       </form>

@@ -79,27 +79,27 @@ export const OpenAICredentialsModal = ({
     <Modal isOpen={isOpen} onClose={onClose} size="lg">
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Add OpenAI account</ModalHeader>
+        <ModalHeader>Adicionar conta da OpenAI</ModalHeader>
         <ModalCloseButton />
         <form onSubmit={createOpenAICredentials}>
           <ModalBody as={Stack} spacing="6">
             <TextInput
               isRequired
-              label="Name"
+              label="Nome"
               onChange={setName}
-              placeholder="My account"
+              placeholder="Minha conta"
               withVariableButton={false}
               debounceTimeout={0}
             />
             <TextInput
               isRequired
               type="password"
-              label="API key"
+              label="Chave da API (API Key)"
               helperText={
                 <>
-                  You can generate an API key{" "}
+                  Pegue sua API Key{" "}
                   <TextLink href={openAITokensPage} isExternal>
-                    here
+                    aqui
                   </TextLink>
                   .
                 </>
@@ -109,11 +109,11 @@ export const OpenAICredentialsModal = ({
               withVariableButton={false}
               debounceTimeout={0}
             />
-            <Alert status="warning">
+            {/* <Alert status="warning">
               <AlertIcon />
               Make sure to add a payment method to your OpenAI account.
               Otherwise, it will not work after a few messages.
-            </Alert>
+            </Alert> */}
           </ModalBody>
 
           <ModalFooter>
@@ -123,7 +123,7 @@ export const OpenAICredentialsModal = ({
               isDisabled={apiKey === "" || name === ""}
               colorScheme="orange"
             >
-              Create
+              Criar
             </Button>
           </ModalFooter>
         </form>

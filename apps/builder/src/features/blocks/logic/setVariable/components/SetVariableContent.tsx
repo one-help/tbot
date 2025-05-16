@@ -12,7 +12,7 @@ export const SetVariableContent = ({ block }: { block: SetVariableBlock }) => {
   return (
     <Text color={"gray.500"} noOfLines={4}>
       {variableName === "" ? (
-        "Click to edit..."
+        "Clique para editar..."
       ) : (
         <Expression
           options={block.options}

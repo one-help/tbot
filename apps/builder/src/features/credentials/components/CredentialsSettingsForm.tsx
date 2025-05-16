@@ -119,8 +119,8 @@ export const CredentialsSettingsForm = () => {
           <DropdownList
             size="sm"
             items={[
-              { label: "User", value: "user" },
-              { label: "Workspace", value: "workspace" },
+              { label: "Usuário", value: "user" },
+              { label: "Espaços de trabalho", value: "workspace" },
             ]}
             currentItem={selectedScope}
             onItemSelect={(value) =>

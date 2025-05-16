@@ -2,23 +2,23 @@ import { createAuth, option } from "@typebot.io/forge";
 
 export const auth = createAuth({
   type: "encryptedCredentials",
-  name: "OpenAI account",
+  name: "Conta OpenAI",
   schema: option.object({
     apiKey: option.string.layout({
       isRequired: true,
-      label: "API key",
+      label: "Chave API (API Key)",
       placeholder: "sk-...",
       inputType: "password",
       helperText:
-        "You can generate an API key [here](https://platform.openai.com/account/api-keys).",
+        "Gere a sua API key [aqui](https://platform.openai.com/account/api-keys).",
       withVariableButton: false,
       isDebounceDisabled: true,
     }),
     baseUrl: option.string.layout({
-      label: "Base URL",
+      label: "URL base",
       defaultValue: "https://api.openai.com/v1",
       moreInfoTooltip:
-        "Use a different URL prefix for API calls, e.g. to use proxy servers.",
+        "Use este campo se você estiver usando uma instância auto-hospedada do OpenAI.",
       withVariableButton: false,
       isDebounceDisabled: true,
     }),

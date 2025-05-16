@@ -42,7 +42,7 @@ import { GuestTypebotHeader } from "./UnauthenticatedTypebotHeader";
 
 export const TypebotHeader = () => {
   const { typebot, publishedTypebot, currentUserMode } = useTypebot();
-  const { workspace } = useWorkspace();
+  const { workspace, currentUserMode: cum } = useWorkspace();
   const { isOpen, onOpen } = useDisclosure();
   const headerBgColor = useColorModeValue("white", "gray.950");
 
@@ -66,18 +66,22 @@ export const TypebotHeader = () => {
     >
       {/* {isOpen && <SupportBubble autoShowDelay={0} />} */}
       <LeftElements pos="absolute" left="1rem" onHelpClick={handleHelpClick} />
-      <TypebotNav
-        display={{ base: "none", xl: "flex" }}
-        pos={{ base: "absolute" }}
-        typebotId={typebot?.id}
-        isResultsDisplayed={isDefined(publishedTypebot)}
-      />
-      <RightElements
-        right="40px"
-        pos="absolute"
-        display={["none", "flex"]}
-        isResultsDisplayed={isDefined(publishedTypebot)}
-      />
+      {cum === "write" && (
+        <>
+          <TypebotNav
+            display={{ base: "none", xl: "flex" }}
+            pos={{ base: "absolute" }}
+            typebotId={typebot?.id}
+            isResultsDisplayed={isDefined(publishedTypebot)}
+          />
+          <RightElements
+            right="40px"
+            pos="absolute"
+            display={["none", "flex"]}
+            isResultsDisplayed={isDefined(publishedTypebot)}
+          />
+        </>
+      )}
     </Flex>
   );
 };

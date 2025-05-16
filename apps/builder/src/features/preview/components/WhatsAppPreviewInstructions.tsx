@@ -89,7 +89,7 @@ export const WhatsAppPreviewInstructions = (props: StackProps) => {
         </Button>
       </HStack>
       <TextInput
-        label="Your phone number"
+        label="Digite seu telefone..."
         placeholder="+XXXXXXXXXXXX"
         type="tel"
         withVariableButton={false}

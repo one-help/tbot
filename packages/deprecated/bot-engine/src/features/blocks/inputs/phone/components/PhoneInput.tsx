@@ -56,9 +56,7 @@ export const PhoneInput = ({
         ref={inputRef}
         value={inputValue}
         onChange={handleChange}
-        placeholder={
-          block.options?.labels?.placeholder ?? "Your phone number..."
-        }
+        placeholder={block.options?.labels?.placeholder ?? "Seu telefone..."}
         defaultCountry={block.options?.defaultCountryCode as Country}
         autoFocus={!isMobile}
       />
