@@ -66,7 +66,7 @@ export const listModels = authenticatedProcedure
 
       const config = {
         apiKey: data.apiKey,
-        baseURL: baseUrl ?? defaultOpenAIOptions.baseUrl,
+        baseURL: baseUrl || data?.baseUrl || defaultOpenAIOptions.baseUrl,
         defaultHeaders: {
           "api-key": data.apiKey,
         },
@@ -74,7 +74,9 @@ export const listModels = authenticatedProcedure
           ? {
               "api-version": apiVersion,
             }
-          : undefined,
+          : isNotEmpty(data?.apiVersion) ? {
+            "api-version": data.apiVersion,
+          } : undefined,
       } satisfies ClientOptions;
 
       const openai = new OpenAI(config);

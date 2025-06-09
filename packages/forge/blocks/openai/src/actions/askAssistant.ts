@@ -83,11 +83,13 @@ export const askAssistant = createAction({
 
         const config = {
           apiKey: credentials.apiKey,
-          baseURL: options.baseUrl,
+          baseURL: credentials?.baseUrl||options.baseUrl,
           defaultHeaders: {
             "api-key": credentials.apiKey,
           },
-          defaultQuery: options.apiVersion
+          defaultQuery: credentials?.apiVersion ? {
+                "api-version": credentials.apiVersion,
+              } :  options.apiVersion
             ? {
                 "api-version": options.apiVersion,
               }
@@ -131,11 +133,13 @@ export const askAssistant = createAction({
 
         const config = {
           apiKey: credentials.apiKey,
-          baseURL: options.baseUrl,
+          baseURL: credentials?.baseUrl||options.baseUrl,
           defaultHeaders: {
             "api-key": credentials.apiKey,
           },
-          defaultQuery: options.apiVersion
+          defaultQuery: credentials?.apiVersion ? {
+                "api-version": credentials.apiVersion,
+              } :  options.apiVersion
             ? {
                 "api-version": options.apiVersion,
               }
@@ -180,8 +184,8 @@ export const askAssistant = createAction({
           apiKey: credentials.apiKey,
           assistantId: options.assistantId,
           message: options.message,
-          baseUrl: options.baseUrl,
-          apiVersion: options.apiVersion,
+          baseUrl: options?.baseUrl||credentials?.baseUrl,
+          apiVersion: options?.apiVersion||credentials?.apiVersion,
           threadVariableId: options.threadVariableId,
           variables,
           functions: options.functions,
@@ -192,7 +196,7 @@ export const askAssistant = createAction({
       }),
     },
     server: async ({
-      credentials: { apiKey },
+      credentials: { apiKey, baseUrl, apiVersion },
       options: {
         baseUrl,
         apiVersion,

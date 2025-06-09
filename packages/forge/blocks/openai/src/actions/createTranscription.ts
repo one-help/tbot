@@ -20,20 +20,23 @@ export const createTranscription = createAction({
   getSetVariableIds: (options) =>
     options.transcriptionVariableId ? [options.transcriptionVariableId] : [],
   run: {
-    server: async ({ credentials: { apiKey }, options, variables, logs }) => {
+    server: async ({ credentials: { apiKey, baseUrl, apiVersion }, options, variables, logs }) => {
       if (!options.url) return logs.add("Audio URL is empty");
       if (!options.transcriptionVariableId)
         return logs.add("Missing transcription variable");
 
       const config = {
         apiKey,
-        baseURL: options.baseUrl,
+        baseURL: baseUrl||options.baseUrl,
         defaultHeaders: {
           "api-key": apiKey,
         },
         defaultQuery: isNotEmpty(options.apiVersion)
           ? {
               "api-version": options.apiVersion,
+            } : isNotEmpty(apiVersion)
+          ? {
+              "api-version": apiVersion,
             }
           : undefined,
       } satisfies ClientOptions;

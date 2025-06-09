@@ -22,5 +22,12 @@ export const auth = createAuth({
       withVariableButton: false,
       isDebounceDisabled: true,
     }),
+    apiVersion: option.string.layout({
+      label: "Versão da API",
+      moreInfoTooltip:
+        "Use este campo se você estiver usando uma instância auto-hospedada do OpenAI.",
+      withVariableButton: false,
+      isDebounceDisabled: true,
+    }),
   }),
 });
