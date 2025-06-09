@@ -56,10 +56,9 @@ export const createChatCompletion = createAction({
         model: undefined,
       }),
     },
-  ],
-  run: {
+  ],  run: {
     server: ({
-      credentials: { apiKey, baseUrl },
+      credentials: { apiKey, baseUrl, apiVersion },
       options,
       variables,
       logs,
@@ -75,6 +74,11 @@ export const createChatCompletion = createAction({
           baseURL: baseUrl ?? options.baseUrl,
           apiKey,
           compatibility: "strict",
+          ...(apiVersion && {
+            defaultQuery: {
+              "api-version": apiVersion,
+            },
+          }),
         })(modelName),
         variables,
         messages: options.messages,
@@ -87,9 +91,8 @@ export const createChatCompletion = createAction({
       });
     },
     stream: {
-      getStreamVariableId: getChatCompletionStreamVarId,
-      run: async ({
-        credentials: { apiKey, baseUrl },
+      getStreamVariableId: getChatCompletionStreamVarId,      run: async ({
+        credentials: { apiKey, baseUrl, apiVersion },
         options,
         variables,
         sessionStore,
@@ -123,6 +126,11 @@ export const createChatCompletion = createAction({
             baseURL: baseUrl ?? options.baseUrl,
             apiKey,
             compatibility: "strict",
+            ...(apiVersion && {
+              defaultQuery: {
+                "api-version": apiVersion,
+              },
+            }),
           })(modelName),
           variables,
           messages: options.messages,
