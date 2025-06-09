@@ -198,8 +198,6 @@ export const askAssistant = createAction({
     server: async ({
       credentials: { apiKey, baseUrl, apiVersion },
       options: {
-        baseUrl,
-        apiVersion,
         assistantId,
         message,
         responseMapping,
