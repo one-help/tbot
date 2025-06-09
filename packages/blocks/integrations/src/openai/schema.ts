@@ -132,6 +132,8 @@ export const openAICredentialsSchema = z
     type: z.literal("openai"),
     data: z.object({
       apiKey: z.string(),
+      baseUrl: z.string().optional(),
+      apiVersion: z.string().optional(),
     }),
   })
   .merge(
