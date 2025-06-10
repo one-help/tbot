@@ -73,7 +73,7 @@ export const createChatCompletion = createAction({
         model: createOpenAI({
           baseURL: baseUrl ?? options.baseUrl,
           apiKey,
-          compatibility: "strict",
+          compatibility: "compatible",
           ...(apiVersion && {
             defaultQuery: {
               "api-version": apiVersion,
@@ -125,7 +125,7 @@ export const createChatCompletion = createAction({
           model: createOpenAI({
             baseURL: baseUrl ?? options.baseUrl,
             apiKey,
-            compatibility: "strict",
+            compatibility: "compatible",
             ...(apiVersion && {
               defaultQuery: {
                 "api-version": apiVersion,
