@@ -20,9 +20,9 @@ export const generateVariables = createAction({
       createOpenAI({
         apiKey: credentials.apiKey,
         baseURL: credentials?.baseUrl,
-        headers: {
+        headers: credentials?.apiKey ? {
           "api-key": credentials.apiKey,
-        },
+        } : undefined,
         defaultQuery: credentials?.apiVersion ? {
           "api-version": credentials.apiVersion,
         } : undefined,
@@ -54,9 +54,9 @@ export const generateVariables = createAction({
         model: createOpenAI({
           apiKey: credentials.apiKey,
            baseURL: credentials?.baseUrl,
-          headers: {
-            "api-key": credentials.apiKey,
-          },
+          headers: credentials?.apiKey ? {
+          "api-key": credentials.apiKey,
+        } : undefined,
           defaultQuery: credentials?.apiVersion ? {
             "api-version": credentials.apiVersion,
           } : undefined,
