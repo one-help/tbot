@@ -74,29 +74,29 @@ const parseComparisonOperatorSymbol = (
 ): string => {
   switch (operator) {
     case ComparisonOperators.CONTAINS:
-      return "contains";
+      return "contém";
     case ComparisonOperators.EQUAL:
       return "=";
     case ComparisonOperators.GREATER:
       return ">";
     case ComparisonOperators.IS_SET:
-      return "is set";
+      return "está definido";
     case ComparisonOperators.LESS:
       return "<";
     case ComparisonOperators.NOT_EQUAL:
       return "!=";
     case ComparisonOperators.ENDS_WITH:
-      return "ends with";
+      return "termina com";
     case ComparisonOperators.STARTS_WITH:
-      return "starts with";
+      return "começa com";
     case ComparisonOperators.IS_EMPTY:
-      return "is empty";
+      return "está vazio";
     case ComparisonOperators.NOT_CONTAINS:
-      return "not contains";
+      return "não contém";
     case ComparisonOperators.MATCHES_REGEX:
-      return "matches";
+      return "corresponde ao regex";
     case ComparisonOperators.NOT_MATCH_REGEX:
-      return "not matches";
+      return "não corresponde ao regex";
     case ComparisonOperators.GREATER_OR_EQUAL:
       return ">=";
     case ComparisonOperators.LESS_OR_EQUAL:
