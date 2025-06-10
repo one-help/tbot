@@ -51,7 +51,7 @@ export const JumpSettings = ({ groupId, options, onOptionsChange }: Props) => {
             icon: <BlockIcon type={block.type} />,
           }))}
           onSelect={handleBlockIdChange}
-          placeholder="Select a block"
+          placeholder="Selecione um bloco"
         />
       )}
     </Stack>

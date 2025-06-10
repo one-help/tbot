@@ -29,20 +29,20 @@ export const WaitSettings = ({ options, onOptionsChange }: Props) => {
   return (
     <Stack spacing={4}>
       <TextInput
-        label="Seconds to wait for:"
+        label="Quantos segundos aguardar:"
         defaultValue={options?.secondsToWaitFor}
         onChange={handleSecondsChange}
       />
       <Accordion allowToggle>
         <AccordionItem>
           <AccordionButton justifyContent="space-between">
-            Advanced
+            Avançado
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel py="4">
             <SwitchWithLabel
-              label="Pause the flow"
-              moreInfoContent="When enabled, the flow is paused until the client sends another message. This is automatic on the web bot."
+              label="Pausar o fluxo"
+              moreInfoContent="Quando ativado, o fluxo será pausado após o tempo de espera. O usuário poderá retomar o fluxo manualmente."
               initialValue={
                 options?.shouldPause ?? defaultWaitOptions.shouldPause
               }
