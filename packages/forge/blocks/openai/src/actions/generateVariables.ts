@@ -26,7 +26,6 @@ export const generateVariables = createAction({
         defaultQuery: credentials?.apiVersion ? {
           "api-version": credentials.apiVersion,
         } : undefined,
-        compatibility: "compatible",
       })(model),
   },
   turnableInto: [
@@ -61,7 +60,6 @@ export const generateVariables = createAction({
           defaultQuery: credentials?.apiVersion ? {
             "api-version": credentials.apiVersion,
           } : undefined,
-          compatibility: "compatible",
         })(options.model),
         prompt: options.prompt,
         variablesToExtract: options.variablesToExtract,

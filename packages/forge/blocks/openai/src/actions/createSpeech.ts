@@ -50,7 +50,6 @@ export const createSpeech = createAction({
           defaultHeaders: {
             "api-key": credentials.apiKey,
           },
-          compatibility: "compatible",
           ...(credentials?.apiVersion && {
             defaultQuery: {
               "api-version": credentials?.apiVersion,
@@ -93,7 +92,6 @@ export const createSpeech = createAction({
         defaultHeaders: {
           "api-key": apiKey,
         },
-        compatibility: "compatible",
           ...(apiVersion && {
             defaultQuery: {
               "api-version": apiVersion,
