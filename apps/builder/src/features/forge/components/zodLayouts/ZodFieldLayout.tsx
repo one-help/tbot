@@ -95,7 +95,7 @@ export const ZodFieldLayout = ({
             innerSchema as z.ZodDiscriminatedUnion<string, z.ZodObject<any>[]>
           }
           dropdownPlaceholder={
-            layout?.placeholder ?? `Select a ${innerSchema._def.discriminator}`
+            layout?.placeholder ?? `Selecione - ${innerSchema._def.discriminator}`
           }
           onDataChange={onDataChange}
         />
@@ -365,7 +365,7 @@ const ZodArrayContent = ({
                 onDataChange(items);
               }}
               initialItems={data}
-              addLabel={`Add ${layout?.itemLabel ?? ""}`}
+              addLabel={`Adicionar ${layout?.itemLabel ?? ""}`}
             >
               {({ item, onItemChange }) => (
                 <ZodFieldLayout
@@ -389,7 +389,7 @@ const ZodArrayContent = ({
         onDataChange(items);
       }}
       initialItems={data}
-      addLabel={`Add ${layout?.itemLabel ?? ""}`}
+      addLabel={`Adicionar ${layout?.itemLabel ?? ""}`}
       isOrdered={layout?.isOrdered}
     >
       {({ item, onItemChange }) => (

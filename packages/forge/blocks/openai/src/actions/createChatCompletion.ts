@@ -12,7 +12,7 @@ import { chatModels } from "../constants";
 import { isModelCompatibleWithVision } from "../helpers/isModelCompatibleWithVision";
 
 export const createChatCompletion = createAction({
-  name: "Create chat completion",
+  name: "IA genérica de texto",
   auth,
   baseOptions,
   options: parseChatCompletionOptions({

@@ -75,6 +75,6 @@ const functionToolItemSchema = option.object({
 
 export const toolsSchema = option
   .array(option.discriminatedUnion("type", [functionToolItemSchema]))
-  .layout({ accordion: "Tools", itemLabel: "tool" });
+  .layout({ accordion: "Ferramentas", itemLabel: "ferramenta" });
 
 export type Tools = z.infer<typeof toolsSchema>;

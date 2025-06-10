@@ -9,26 +9,26 @@ import { baseOptions } from "../baseOptions";
 import { defaultOpenAIOptions, openAIVoices } from "../constants";
 
 export const createSpeech = createAction({
-  name: "Create speech",
+  name: "Criar áudio",
   auth,
   baseOptions,
   options: option.object({
     model: option.string.layout({
       fetcher: "fetchSpeechModels",
       defaultValue: "tts-1",
-      placeholder: "Select a model",
+      placeholder: "Selecione um modelo",
     }),
     input: option.string.layout({
-      label: "Input",
+      label: "Texto de entrada",
       inputType: "textarea",
     }),
     voice: option.enum(openAIVoices).layout({
-      label: "Voice",
-      placeholder: "Select a voice",
+      label: "Voz",
+      placeholder: "Selecione a voz",
     }),
     saveUrlInVariableId: option.string.layout({
       inputType: "variableDropdown",
-      label: "Save URL in variable",
+      label: "Salvar URL em variável",
     }),
   }),
   getSetVariableIds: (options) =>
@@ -46,15 +46,16 @@ export const createSpeech = createAction({
         const baseUrl = options?.baseUrl;
         const config = {
           apiKey: credentials.apiKey,
-          baseURL: baseUrl,
+          baseURL: credentials?.baseUrl||baseUrl,
           defaultHeaders: {
             "api-key": credentials.apiKey,
           },
-          defaultQuery: options?.apiVersion
-            ? {
-                "api-version": options.apiVersion,
-              }
-            : undefined,
+          compatibility: "compatible",
+          ...(credentials?.apiVersion && {
+            defaultQuery: {
+              "api-version": credentials?.apiVersion,
+            },
+          }),
         } satisfies ClientOptions;
 
         const openai = new OpenAI(config);
@@ -80,7 +81,7 @@ export const createSpeech = createAction({
     },
   ],
   run: {
-    server: async ({ credentials: { apiKey }, options, variables, logs }) => {
+    server: async ({ credentials: { apiKey, baseUrl, apiVersion }, options, variables, logs }) => {
       if (!options.input) return logs.add("Create speech input is empty");
       if (!options.voice) return logs.add("Create speech voice is empty");
       if (!options.saveUrlInVariableId)
@@ -88,15 +89,16 @@ export const createSpeech = createAction({
 
       const config = {
         apiKey,
-        baseURL: options.baseUrl,
+        baseURL: baseUrl ?? options.baseUrl,
         defaultHeaders: {
           "api-key": apiKey,
         },
-        defaultQuery: isNotEmpty(options.apiVersion)
-          ? {
-              "api-version": options.apiVersion,
-            }
-          : undefined,
+        compatibility: "compatible",
+          ...(apiVersion && {
+            defaultQuery: {
+              "api-version": apiVersion,
+            },
+          }),
       } satisfies ClientOptions;
 
       const openai = new OpenAI(config);

@@ -157,7 +157,7 @@ export const ItemNodesList = ({
         onClick={() => insertItem(0)}
         initialHeightPixels={5}
       >
-        Add {itemName}
+        Adicionar {itemName}
       </PlaceholderNode>
       {block.items.map((item, idx) => (
         <Stack key={item.id} spacing={0}>
@@ -173,7 +173,7 @@ export const ItemNodesList = ({
             ref={handlePushElementRef(idx + 1)}
             onClick={() => insertItem(idx + 1)}
           >
-            Add {itemName}
+            Adicionar {itemName}
           </PlaceholderNode>
         </Stack>
       ))}

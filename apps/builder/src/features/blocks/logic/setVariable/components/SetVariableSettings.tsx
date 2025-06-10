@@ -20,6 +20,7 @@ import {
   hiddenTypes,
   sessionOnlySetVariableOptions,
   valueTypes,
+  valueTypesBR,
   whatsAppSetVariableTypes,
 } from "@typebot.io/blocks-logic/setVariable/constants";
 import type { SetVariableBlock } from "@typebot.io/blocks-logic/setVariable/schema";
@@ -91,12 +92,12 @@ export const SetVariableSettings = ({ options, onOptionsChange }: Props) => {
       <Stack spacing="4">
         <Stack>
           <Text mb="0" fontWeight="medium">
-            Value:
+            Novo valor:
           </Text>
           <Select
             selectedItem={options?.type ?? defaultSetVariableOptions.type}
             items={setVarTypes.map((type) => ({
-              label: type,
+              label: valueTypesBR[type],
               value: type,
               icon: whatsAppSetVariableTypes.includes(type as any) ? (
                 <WhatsAppLogo />
@@ -109,8 +110,8 @@ export const SetVariableSettings = ({ options, onOptionsChange }: Props) => {
         {selectedVariable && !isSessionOnly && !isLinkedToAnswer && (
           <SwitchWithLabel
             key={selectedVariable.id}
-            label="Save in results"
-            moreInfoContent="By default, the variable is saved only for the user chat session. Check this option if you want to also store the variable in the typebot Results table."
+            label="Salvar nos resultados"
+            moreInfoContent="Por padrão, as variáveis são salvas no resultado do bot. Desmarque esta opção se quiser que a variável seja salva apenas na sessão atual."
             initialValue={!selectedVariable.isSessionVariable}
             onCheckChange={updateIsSessionVariable}
           />
@@ -213,7 +214,7 @@ const SetVariableValue = ({
       return (
         <>
           <SwitchWithLabel
-            label="Execute on client"
+            label="Executar do lado do cliente"
             moreInfoContent="Check this if you need access to client-only variables like `window` or `document`."
             initialValue={
               options?.isExecutedOnClient ??

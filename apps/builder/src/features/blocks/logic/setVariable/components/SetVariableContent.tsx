@@ -4,6 +4,9 @@ import { Stack, Tag, Text } from "@chakra-ui/react";
 import type { SetVariableBlock } from "@typebot.io/blocks-logic/setVariable/schema";
 import { byId } from "@typebot.io/lib/utils";
 import type { Variable } from "@typebot.io/variables/schemas";
+import {
+  valueTypesBR,
+} from "@typebot.io/blocks-logic/setVariable/constants";
 
 export const SetVariableContent = ({ block }: { block: SetVariableBlock }) => {
   const { typebot } = useTypebot();
@@ -67,12 +70,12 @@ const Expression = ({
     case "Append value(s)": {
       return (
         <Text as="span">
-          Append {options.item} in {variableName}
+          Anexar {options.item} em {variableName}
         </Text>
       );
     }
     case "Empty":
-      return <Text as="span">Reset {variableName} </Text>;
+      return <Text as="span">Resetar {variableName} </Text>;
     case "Shift":
     case "Pop": {
       const itemVariableName = variables.find(
@@ -98,7 +101,7 @@ const Expression = ({
     case "Yesterday": {
       return (
         <Text as="span">
-          {variableName} = <Tag colorScheme="purple">System.{options.type}</Tag>
+          {variableName} = <Tag colorScheme="purple">System.{valueTypesBR[options.type]}</Tag>
         </Text>
       );
     }
@@ -109,7 +112,7 @@ const Expression = ({
       return (
         <Text as="span">
           {variableName} ={" "}
-          <Tag colorScheme="purple">WhatsApp.{options.type}</Tag>
+          <Tag colorScheme="purple">WhatsApp.{valueTypesBR[options.type]}</Tag>
         </Text>
       );
   }

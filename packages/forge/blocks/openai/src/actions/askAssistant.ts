@@ -20,24 +20,24 @@ import { splitUserTextMessageIntoOpenAIBlocks } from "../helpers/splitUserTextMe
 export const askAssistant = createAction({
   auth,
   baseOptions,
-  name: "Ask Assistant",
+  name: "Assistente IA",
   options: option
     .object({
       assistantId: option.string.layout({
-        label: "Assistant ID",
-        placeholder: "Select an assistant",
-        moreInfoTooltip: "The OpenAI assistant you want to ask question to.",
+        label: "Assistente",
+        placeholder: "Selecione um assistente",
+        moreInfoTooltip: "Assistente a ser usado para responder a pergunta.",
         fetcher: "fetchAssistants",
       }),
       threadVariableId: option.string.layout({
-        label: "Thread ID",
+        label: "Identificador de conversa",
         moreInfoTooltip:
           "Used to remember the conversation with the user. If empty, a new thread is created.",
         inputType: "variableDropdown",
       }),
 
       message: option.string.layout({
-        label: "Message",
+        label: "Mensagem do usuário para a IA",
         inputType: "textarea",
       }),
       functions: option
@@ -45,7 +45,7 @@ export const askAssistant = createAction({
           option.object({
             name: option.string.layout({
               fetcher: "fetchAssistantFunctions",
-              label: "Name",
+              label: "Nome da função",
             }),
             code: option.string.layout({
               inputType: "code",
@@ -57,18 +57,18 @@ export const askAssistant = createAction({
             }),
           }),
         )
-        .layout({ accordion: "Functions", itemLabel: "function" }),
+        .layout({ accordion: "Funções", itemLabel: "função" }),
       additionalInstructions: option.string.layout({
-        label: "Additional Instructions",
+        label: "Instruções adicionais",
         inputType: "textarea",
-        accordion: "Advanced settings",
+        accordion: "Avançado",
       }),
       responseMapping: option
         .saveResponseArray(["Message", "Thread ID"] as const, {
           item: { hiddenItems: ["Thread ID"] },
         })
         .layout({
-          accordion: "Save response",
+          accordion: "Salvar resposta",
         }),
     })
     .merge(deprecatedAskAssistantOptions),

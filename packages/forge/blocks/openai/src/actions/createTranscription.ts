@@ -5,7 +5,7 @@ import { auth } from "../auth";
 import { baseOptions } from "../baseOptions";
 
 export const createTranscription = createAction({
-  name: "Create transcription",
+  name: "Criar transcrição",
   auth,
   baseOptions,
   options: option.object({
@@ -13,7 +13,7 @@ export const createTranscription = createAction({
       label: "Audio URL",
     }),
     transcriptionVariableId: option.string.layout({
-      label: "Save result to",
+      label: "Salvar resultados em variável",
       inputType: "variableDropdown",
     }),
   }),

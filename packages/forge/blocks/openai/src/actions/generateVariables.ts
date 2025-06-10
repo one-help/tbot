@@ -8,7 +8,7 @@ import { baseOptions } from "../baseOptions";
 import { chatModels, reasoningModels } from "../constants";
 
 export const generateVariables = createAction({
-  name: "Generate variables",
+  name: "Gerar variáveis",
   auth,
   baseOptions,
   options: parseGenerateVariablesOptions({
@@ -19,6 +19,13 @@ export const generateVariables = createAction({
     getModel: ({ credentials, model }) =>
       createOpenAI({
         apiKey: credentials.apiKey,
+        baseURL: credentials?.baseUrl,
+        headers: {
+          "api-key": credentials.apiKey,
+        },
+        defaultQuery: credentials?.apiVersion ? {
+          "api-version": credentials.apiVersion,
+        } : undefined,
         compatibility: "compatible",
       })(model),
   },
@@ -47,6 +54,13 @@ export const generateVariables = createAction({
       return runGenerateVariables({
         model: createOpenAI({
           apiKey: credentials.apiKey,
+           baseURL: credentials?.baseUrl,
+          headers: {
+            "api-key": credentials.apiKey,
+          },
+          defaultQuery: credentials?.apiVersion ? {
+            "api-version": credentials.apiVersion,
+          } : undefined,
           compatibility: "compatible",
         })(options.model),
         prompt: options.prompt,

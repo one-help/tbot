@@ -62,7 +62,7 @@ export const ConditionItemNode = ({ item, indices }: Props) => {
         >
           {item.content?.comparisons?.length === 0 ||
           comparisonIsEmpty(item.content?.comparisons?.at(0)) ? (
-            <Text color={"gray.500"}>Configure...</Text>
+            <Text color={"gray.500"}>Configurar...</Text>
           ) : (
             <ConditionContent
               condition={item.content}

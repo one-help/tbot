@@ -57,8 +57,8 @@ type Props = {
 export const parseChatCompletionOptions = ({ models }: Props) =>
   option.object({
     model: option.string.layout({
-      placeholder: "Select a model",
-      label: "Model",
+      placeholder: "Selecione um modelo",
+      label: "Modelo",
       allowCustomValue: true,
       helperText: models.helperText,
       autoCompleteItems: models.type === "static" ? models.models : undefined,
@@ -73,11 +73,11 @@ export const parseChatCompletionOptions = ({ models }: Props) =>
           dialogueMessageItemSchema,
         ]),
       )
-      .layout({ accordion: "Messages", itemLabel: "message", isOrdered: true }),
+      .layout({ accordion: "Mensagem", itemLabel: "mensagem", isOrdered: true }),
     tools: toolsSchema,
     temperature: option.number.layout({
-      accordion: "Advanced settings",
-      label: "Temperature",
+      accordion: "Configurações avançadas",
+      label: "Temperatura",
       direction: "row",
       defaultValue: 1,
     }),
@@ -89,7 +89,7 @@ export const parseChatCompletionOptions = ({ models }: Props) =>
         "Completion tokens",
       ] as const)
       .layout({
-        accordion: "Save response",
+        accordion: "Salvar respostas",
       }),
   });
 
