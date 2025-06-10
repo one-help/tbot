@@ -20,21 +20,21 @@ export const convertFilterToWhereClause = (
   const where = filter.comparisons
     .map((comparison) => {
       switch (comparison.operator) {
-        case "Not equal":
+        case "Não é igual a":
           return `(${comparison.input},ne,${comparison.value})`;
-        case "Contains":
+        case "Contém":
           return `(${comparison.input},like,%${comparison.value}%)`;
-        case "Greater than":
+        case "Maior que":
           return `(${comparison.input},gt,${comparison.value})`;
-        case "Less than":
+        case "Menor que":
           return `(${comparison.input},lt,${comparison.value})`;
-        case "Is set":
+        case "Está definido":
           return `(${comparison.input},isnot,null)`;
-        case "Is empty":
+        case "Está vazio":
           return `(${comparison.input},is,null)`;
-        case "Starts with":
+        case "Começa com":
           return `(${comparison.input},like,${comparison.value}%)`;
-        case "Ends with":
+        case "Termina com":
           return `(${comparison.input},like,%${comparison.value})`;
         default:
           return `(${comparison.input},eq,${comparison.value})`;

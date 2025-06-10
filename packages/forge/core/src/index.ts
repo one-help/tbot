@@ -178,7 +178,7 @@ export const option = {
             operator: z
               .enum(operators)
               .optional()
-              .layout({ defaultValue: "Equal to" }),
+              .layout({ defaultValue: "Igual a" }),
             value: z
               .string()
               .optional()
@@ -194,16 +194,16 @@ export const option = {
 };
 
 const defaultFilterOperators = [
-  "Equal to",
+  "Igual a",
   "Not equal",
-  "Contains",
-  "Does not contain",
-  "Greater than",
-  "Less than",
-  "Is set",
-  "Is empty",
-  "Starts with",
-  "Ends with",
-  "Matches regex",
-  "Does not match regex",
+  "Contém",
+  "Não contém",
+  "Maior que",
+  "Menor que",
+ "Está definido",
+  "Está vazio",
+ "Começa com",
+  "Termina com",
+  "Corresponde a regex",
+  "Não corresponde a regex",
 ] as const;
