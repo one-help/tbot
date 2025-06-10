@@ -73,6 +73,9 @@ export const createChatCompletion = createAction({
         model: createOpenAI({
           baseURL: baseUrl ?? options.baseUrl,
           apiKey,
+          defaultHeaders: {
+            "api-key": apiKey,
+          },
           compatibility: "compatible",
           ...(apiVersion && {
             defaultQuery: {
@@ -125,6 +128,9 @@ export const createChatCompletion = createAction({
           model: createOpenAI({
             baseURL: baseUrl ?? options.baseUrl,
             apiKey,
+            defaultHeaders: {
+              "api-key": apiKey,
+            },
             compatibility: "compatible",
             ...(apiVersion && {
               defaultQuery: {
