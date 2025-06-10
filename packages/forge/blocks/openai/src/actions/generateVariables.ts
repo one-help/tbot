@@ -23,9 +23,11 @@ export const generateVariables = createAction({
         headers: credentials?.apiKey ? {
           "api-key": credentials.apiKey,
         } : undefined,
-        defaultQuery: credentials?.apiVersion ? {
-          "api-version": credentials.apiVersion,
-        } : undefined,
+        ...(credentials?.apiVersion && {
+            defaultQuery: {
+              "api-version": credentials.apiVersion,
+            },
+          }),
       })(model),
   },
   turnableInto: [
@@ -57,9 +59,11 @@ export const generateVariables = createAction({
           headers: credentials?.apiKey ? {
           "api-key": credentials.apiKey,
         } : undefined,
-          defaultQuery: credentials?.apiVersion ? {
-            "api-version": credentials.apiVersion,
-          } : undefined,
+          ...(credentials?.apiVersion && {
+            defaultQuery: {
+              "api-version": credentials.apiVersion,
+            },
+          }),
         })(options.model),
         prompt: options.prompt,
         variablesToExtract: options.variablesToExtract,
