@@ -24,6 +24,7 @@ import { OpenAILogo } from "@/features/blocks/integrations/openai/components/Ope
 import { PabblyConnectLogo } from "@/features/blocks/integrations/pabbly/components/PabblyConnectLogo";
 import { PixelLogo } from "@/features/blocks/integrations/pixel/components/PixelLogo";
 import { SendEmailIcon } from "@/features/blocks/integrations/sendEmail/components/SendEmailIcon";
+import { WhatsAppIcon } from "@/features/blocks/integrations/whatsappSendTemplate/components/WhatsAppIcon";
 import { ZapierLogo } from "@/features/blocks/integrations/zapier/components/ZapierLogo";
 import { AbTestIcon } from "@/features/blocks/logic/abTest/components/AbTestIcon";
 import { ConditionIcon } from "@/features/blocks/logic/condition/components/ConditionIcon";
@@ -127,6 +128,8 @@ export const BlockIcon = ({ type, ...props }: BlockIconProps): JSX.Element => {
       return <ChatwootLogo {...props} />;
     case IntegrationBlockType.PIXEL:
       return <PixelLogo {...props} />;
+    case IntegrationBlockType.WHATSAPP_SEND_TEMPLATE:
+      return <WhatsAppIcon {...props} />;
     case "start":
       return <FlagIcon {...props} />;
     case IntegrationBlockType.OPEN_AI:
