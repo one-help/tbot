@@ -114,7 +114,8 @@ export const BlockIcon = ({ type, block, ...props }: BlockIconProps): JSX.Elemen
     case IntegrationBlockType.GOOGLE_SHEETS:
       return <GoogleSheetsLogo {...props} />;
     case IntegrationBlockType.GOOGLE_ANALYTICS:
-      return <GoogleAnalyticsLogo {...props} />;    case IntegrationBlockType.HTTP_REQUEST:
+      return <GoogleAnalyticsLogo {...props} />;   
+    case IntegrationBlockType.HTTP_REQUEST:
       // Verificar se é um bloco WhatsApp primeiro
       if (block && isWhatsAppSendTemplateBlock(block)) {
         return <WhatsAppIcon {...props} />;
@@ -131,6 +132,8 @@ export const BlockIcon = ({ type, block, ...props }: BlockIconProps): JSX.Elemen
     case IntegrationBlockType.CHATWOOT:
       return <ChatwootLogo {...props} />;    case IntegrationBlockType.PIXEL:
       return <PixelLogo {...props} />;
+    case IntegrationBlockType.WHATSAPP_SEND_TEMPLATE:
+      return <WhatsAppIcon {...props} />;
     case "start":
       return <FlagIcon {...props} />;
     case IntegrationBlockType.OPEN_AI:
