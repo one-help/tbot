@@ -7,17 +7,15 @@ import type { Variable } from "@typebot.io/variables/schemas";
 
 const responseKeys = [
   { label: "Message ID", value: "messageId" },
-  { label: "Status", value: "status" },
+  { label: "Status", value: "messageStatus" },
   { label: "Error Message", value: "errorMessage" },
-  { label: "Error Code", value: "errorCode" },
-  { label: "Timestamp", value: "timestamp" },
 ] as const;
 
 export const WhatsAppResponseMappingInputs = ({
   item,
   onItemChange,
 }: TableListItemProps<WhatsAppResponseVariableMapping>) => {
-  const handleResponseKeyChange = (responseKey: typeof responseKeys[number]) =>
+  const handleResponseKeyChange = (responseKey: "messageId" | "messageStatus" | "errorMessage") =>
     onItemChange({ ...item, responseKey });
     
   const handleVariableChange = (variable?: Variable) =>
