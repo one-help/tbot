@@ -30,8 +30,7 @@ export const whatsappSendTemplateOptionsSchema = z.object({
 export const whatsappSendTemplateBlockSchema = blockBaseSchema
   .merge(
     z.object({
-      type: z.enum([IntegrationBlockType.HTTP_REQUEST]),
-      whatsappType: z.literal("template").optional(), // Para distinguir do webhook padrão
+      type: z.enum([IntegrationBlockType.WHATSAPP_SEND_TEMPLATE]),
       options: whatsappSendTemplateOptionsSchema.optional(),
     }),
   )
@@ -46,5 +45,5 @@ export type WhatsAppResponseVariableMapping = z.infer<typeof responseVariableMap
 
 // Helper function to identify WhatsApp blocks
 export const isWhatsAppSendTemplateBlock = (block: any): block is WhatsAppSendTemplateBlock => {
-  return block.type === IntegrationBlockType.HTTP_REQUEST && block.whatsappType === "template";
+  return block.type === IntegrationBlockType.WHATSAPP_SEND_TEMPLATE;
 };

@@ -1,6 +1,5 @@
 import { IntegrationBlockType } from "@typebot.io/blocks-integrations/constants";
 import type { IntegrationBlock } from "@typebot.io/blocks-integrations/schema";
-import { isWhatsAppSendTemplateBlock } from "@typebot.io/blocks-integrations/whatsappSendTemplate/schema";
 import type { SessionState } from "@typebot.io/chat-session/schemas";
 import { env } from "@typebot.io/env";
 import { isNotDefined } from "@typebot.io/lib/utils";
@@ -48,16 +47,6 @@ export const executeIntegration = async ({
         })),
         startTimeShouldBeUpdated: true,
       };    case IntegrationBlockType.HTTP_REQUEST:
-      // Verificar se é um bloco WhatsApp usando a função helper
-      if (isWhatsAppSendTemplateBlock(block)) {
-        return {
-          ...(await executeWhatsAppSendTemplateBlock(block, {
-            state,
-            sessionStore,
-          })),
-          startTimeShouldBeUpdated: true,
-        };
-      }
       return {
         ...(await executeHttpRequestBlock(block, {
           state,
@@ -71,6 +60,14 @@ export const executeIntegration = async ({
         startTimeShouldBeUpdated: true,
       };    case IntegrationBlockType.PIXEL:
       return executePixelBlock(block, { state, sessionStore });
+    case IntegrationBlockType.WHATSAPP_SEND_TEMPLATE:
+      return {
+        ...(await executeWhatsAppSendTemplateBlock(block, {
+          state,
+          sessionStore,
+        })),
+        startTimeShouldBeUpdated: true,
+      };
     default:
       return {
         ...(await executeForgedBlock(block, { state, sessionStore })),

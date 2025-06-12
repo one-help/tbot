@@ -97,4 +97,5 @@ export const getIntegrationBlockLabel = (
   [IntegrationBlockType.CHATWOOT]: t("editor.sidebarBlock.chatwoot.label"),
   [IntegrationBlockType.OPEN_AI]: t("editor.sidebarBlock.openai.label"),
   [IntegrationBlockType.PIXEL]: t("editor.sidebarBlock.pixel.label"),
+  [IntegrationBlockType.WHATSAPP_SEND_TEMPLATE]: "WhatsApp - Disparar modelo",
 });
