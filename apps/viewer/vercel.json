@@ -9,7 +9,5 @@
   },
   "github": {
     "silent": true
-  },
-  "buildCommand": "turbo build",
-  "ignoreCommand": "true"
+  }
 }
