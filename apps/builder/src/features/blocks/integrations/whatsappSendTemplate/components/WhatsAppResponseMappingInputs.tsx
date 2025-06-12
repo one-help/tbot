@@ -14,9 +14,8 @@ const responseKeys = [
 export const WhatsAppResponseMappingInputs = ({
   item,
   onItemChange,
-}: TableListItemProps<WhatsAppResponseVariableMapping>) => {
-  const handleResponseKeyChange = (responseKey: "messageId" | "messageStatus" | "errorMessage") =>
-    onItemChange({ ...item, responseKey });
+}: TableListItemProps<WhatsAppResponseVariableMapping>) => {  const handleResponseKeyChange = (responseKey: string) =>
+    onItemChange({ ...item, responseKey: responseKey as "messageId" | "messageStatus" | "errorMessage" });
     
   const handleVariableChange = (variable?: Variable) =>
     onItemChange({ ...item, variableId: variable?.id });
