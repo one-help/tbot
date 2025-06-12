@@ -42,12 +42,13 @@ import { BubbleBlockType } from "@typebot.io/blocks-bubbles/constants";
 import type { Block } from "@typebot.io/blocks-core/schemas/schema";
 import { InputBlockType } from "@typebot.io/blocks-inputs/constants";
 import { IntegrationBlockType } from "@typebot.io/blocks-integrations/constants";
+import { isWhatsAppSendTemplateBlock } from "@typebot.io/blocks-integrations/whatsappSendTemplate/schema";
 import { LogicBlockType } from "@typebot.io/blocks-logic/constants";
 import React from "react";
 
-type BlockIconProps = { type: Block["type"] } & IconProps;
+type BlockIconProps = { type: Block["type"]; block?: Block } & IconProps;
 
-export const BlockIcon = ({ type, ...props }: BlockIconProps): JSX.Element => {
+export const BlockIcon = ({ type, block, ...props }: BlockIconProps): JSX.Element => {
   const orange = useColorModeValue("orange.500", "orange.400");
   const gray = useColorModeValue("gray.900", "gray.200");
   const purple = useColorModeValue("purple.500", "purple.400");
@@ -113,8 +114,11 @@ export const BlockIcon = ({ type, ...props }: BlockIconProps): JSX.Element => {
     case IntegrationBlockType.GOOGLE_SHEETS:
       return <GoogleSheetsLogo {...props} />;
     case IntegrationBlockType.GOOGLE_ANALYTICS:
-      return <GoogleAnalyticsLogo {...props} />;
-    case IntegrationBlockType.HTTP_REQUEST:
+      return <GoogleAnalyticsLogo {...props} />;    case IntegrationBlockType.HTTP_REQUEST:
+      // Verificar se é um bloco WhatsApp primeiro
+      if (block && isWhatsAppSendTemplateBlock(block)) {
+        return <WhatsAppIcon {...props} />;
+      }
       return <ThunderIcon {...props} />;
     case IntegrationBlockType.ZAPIER:
       return <ZapierLogo {...props} />;
@@ -125,11 +129,8 @@ export const BlockIcon = ({ type, ...props }: BlockIconProps): JSX.Element => {
     case IntegrationBlockType.EMAIL:
       return <SendEmailIcon {...props} />;
     case IntegrationBlockType.CHATWOOT:
-      return <ChatwootLogo {...props} />;
-    case IntegrationBlockType.PIXEL:
+      return <ChatwootLogo {...props} />;    case IntegrationBlockType.PIXEL:
       return <PixelLogo {...props} />;
-    case IntegrationBlockType.WHATSAPP_SEND_TEMPLATE:
-      return <WhatsAppIcon {...props} />;
     case "start":
       return <FlagIcon {...props} />;
     case IntegrationBlockType.OPEN_AI:

@@ -45,6 +45,7 @@ import type {
 } from "@typebot.io/blocks-core/schemas/schema";
 import { InputBlockType } from "@typebot.io/blocks-inputs/constants";
 import { IntegrationBlockType } from "@typebot.io/blocks-integrations/constants";
+import { isWhatsAppSendTemplateBlock } from "@typebot.io/blocks-integrations/whatsappSendTemplate/schema";
 import { LogicBlockType } from "@typebot.io/blocks-logic/constants";
 
 type Props = {
@@ -143,8 +144,11 @@ export const BlockNodeContent = ({
     }
     case IntegrationBlockType.GOOGLE_ANALYTICS: {
       return <GoogleAnalyticsNodeBody action={block.options?.action} />;
-    }
-    case IntegrationBlockType.HTTP_REQUEST: {
+    }    case IntegrationBlockType.HTTP_REQUEST: {
+      // Verificar se é um bloco WhatsApp primeiro
+      if (isWhatsAppSendTemplateBlock(block)) {
+        return <WhatsAppSendTemplateNodeContent block={block} />;
+      }
       return <HttpRequestNodeContent block={block} />;
     }
     case IntegrationBlockType.ZAPIER: {
@@ -164,11 +168,9 @@ export const BlockNodeContent = ({
     }
     case IntegrationBlockType.OPEN_AI: {
       return <OpenAINodeBody options={block.options} />;
-    }    case IntegrationBlockType.PIXEL: {
-      return <PixelNodeBody options={block.options} />;
     }
-    case IntegrationBlockType.WHATSAPP_SEND_TEMPLATE: {
-      return <WhatsAppSendTemplateNodeContent block={block} />;
+    case IntegrationBlockType.PIXEL: {
+      return <PixelNodeBody options={block.options} />;
     }
     default: {
       return <ForgedBlockNodeContent block={block} indices={indices} />;

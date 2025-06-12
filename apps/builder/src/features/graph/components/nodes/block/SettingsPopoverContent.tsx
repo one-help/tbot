@@ -50,6 +50,7 @@ import {
 import type { BlockWithOptions } from "@typebot.io/blocks-core/schemas/schema";
 import { InputBlockType } from "@typebot.io/blocks-inputs/constants";
 import { IntegrationBlockType } from "@typebot.io/blocks-integrations/constants";
+import { isWhatsAppSendTemplateBlock } from "@typebot.io/blocks-integrations/whatsappSendTemplate/schema";
 import { LogicBlockType } from "@typebot.io/blocks-logic/constants";
 import { EventType } from "@typebot.io/events/constants";
 import type { TEventWithOptions } from "@typebot.io/events/schemas";
@@ -332,8 +333,13 @@ export const NodeSettings = ({
       return (
         <PabblyConnectSettings block={node} onOptionsChange={updateOptions} />
       );
-    }
-    case IntegrationBlockType.HTTP_REQUEST: {
+    }    case IntegrationBlockType.HTTP_REQUEST: {
+      // Verificar se é um bloco WhatsApp primeiro
+      if (isWhatsAppSendTemplateBlock(node)) {
+        return (
+          <WhatsAppSendTemplateSettings block={node} onOptionsChange={updateOptions} />
+        );
+      }
       return (
         <HttpRequestSettings block={node} onOptionsChange={updateOptions} />
       );
@@ -353,17 +359,13 @@ export const NodeSettings = ({
           onOptionsChange={updateOptions}
         />
       );
-    }    case IntegrationBlockType.OPEN_AI: {
+    }
+    case IntegrationBlockType.OPEN_AI: {
       return <OpenAISettings block={node} onOptionsChange={updateOptions} />;
     }
     case IntegrationBlockType.PIXEL: {
       return (
         <PixelSettings options={node.options} onOptionsChange={updateOptions} />
-      );
-    }
-    case IntegrationBlockType.WHATSAPP_SEND_TEMPLATE: {
-      return (
-        <WhatsAppSendTemplateSettings block={node} onOptionsChange={updateOptions} />
       );
     }
     case LogicBlockType.CONDITION:
