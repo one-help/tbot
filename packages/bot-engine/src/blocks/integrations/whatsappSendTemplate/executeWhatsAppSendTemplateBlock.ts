@@ -134,14 +134,19 @@ export const executeWhatsAppSendTemplateBlock = async (
     } else {
       // Error case
       nextEdgeId = block.options.errorEdgeId || block.outgoingEdgeId;
-    }
+    }    // Handle response and save to variables
+    const { updatedState, newSetVariableHistory } = updateVariablesInSession({
+      state,
+      newVariables,
+      currentBlockId: block.id,
+    });
 
     return {
       outgoingEdgeId: nextEdgeId,
       logs,
-      newSessionState: updateVariablesInSession(state)(newVariables),
+      newSessionState: updatedState,
+      newSetVariableHistory,
     };
-
   } catch (error) {
     logs.push({
       status: "error",
@@ -153,17 +158,22 @@ export const executeWhatsAppSendTemplateBlock = async (
     });
 
     // Save error to variables if mapping exists
-    const newVariables = processWhatsAppResponse(
-      { error: { message: error instanceof Error ? error.message : "Unknown error" } },
-      500,
-      responseVariableMapping || [],
-      typebot.variables,
-    );
+    const { updatedState, newSetVariableHistory } = updateVariablesInSession({
+      state,
+      newVariables: processWhatsAppResponse(
+        { error: { message: error instanceof Error ? error.message : "Unknown error" } },
+        500,
+        responseVariableMapping || [],
+        typebot.variables,
+      ),
+      currentBlockId: block.id,
+    });
 
     return {
       outgoingEdgeId: block.options.errorEdgeId || block.outgoingEdgeId,
       logs,
-      newSessionState: updateVariablesInSession(state)(newVariables),
+      newSessionState: updatedState,
+      newSetVariableHistory,
     };
   }
 };
@@ -210,7 +220,7 @@ const processWhatsAppResponse = (
     if (!mapping.variableId) return;
 
     const variableIndex = newVariables.findIndex(
-      (variable) => variable.id === mapping.variableId,
+      (variable: any) => variable.id === mapping.variableId,
     );
 
     if (variableIndex === -1) return;
