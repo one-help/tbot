@@ -9,4 +9,5 @@ export enum IntegrationBlockType {
   PABBLY_CONNECT = "Pabbly",
   CHATWOOT = "Chatwoot",
   PIXEL = "Pixel",
+  WHATSAPP_SEND_TEMPLATE = "WhatsApp - Disparar modelo",
 }

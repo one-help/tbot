@@ -11,6 +11,7 @@ import { executeGoogleAnalyticsBlock } from "./blocks/integrations/legacy/google
 import { executeOpenAIBlock } from "./blocks/integrations/legacy/openai/executeOpenAIBlock";
 import { executePixelBlock } from "./blocks/integrations/pixel/executePixelBlock";
 import { executeSendEmailBlock } from "./blocks/integrations/sendEmail/executeSendEmailBlock";
+import { executeWhatsAppSendTemplateBlock } from "./blocks/integrations/whatsappSendTemplate/executeWhatsAppSendTemplateBlock";
 import { executeForgedBlock } from "./forge/executeForgedBlock";
 import type { ExecuteIntegrationResponse } from "./types";
 
@@ -58,9 +59,16 @@ export const executeIntegration = async ({
       return {
         ...(await executeOpenAIBlock(state, block, sessionStore)),
         startTimeShouldBeUpdated: true,
-      };
-    case IntegrationBlockType.PIXEL:
+      };    case IntegrationBlockType.PIXEL:
       return executePixelBlock(block, { state, sessionStore });
+    case IntegrationBlockType.WHATSAPP_SEND_TEMPLATE:
+      return {
+        ...(await executeWhatsAppSendTemplateBlock(block, {
+          state,
+          sessionStore,
+        })),
+        startTimeShouldBeUpdated: true,
+      };
     default:
       return {
         ...(await executeForgedBlock(block, { state, sessionStore })),

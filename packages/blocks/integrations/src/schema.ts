@@ -8,6 +8,7 @@ import { openAIBlockSchema } from "./openai/schema";
 import { pabblyConnectBlockSchemas } from "./pabblyConnect/schema";
 import { pixelBlockSchema } from "./pixel/schema";
 import { sendEmailBlockSchema } from "./sendEmail/schema";
+import { whatsappSendTemplateBlockSchema } from "./whatsappSendTemplate/schema";
 import { zapierBlockSchemas } from "./zapier/schema";
 
 const integrationBlockSchemas = [
@@ -16,6 +17,7 @@ const integrationBlockSchemas = [
   openAIBlockSchema,
   sendEmailBlockSchema,
   pixelBlockSchema,
+  whatsappSendTemplateBlockSchema,
 ] as const;
 
 export const integrationBlockV5Schema = z.discriminatedUnion("type", [

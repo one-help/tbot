@@ -20,6 +20,7 @@ import { OpenAISettings } from "@/features/blocks/integrations/openai/components
 import { PabblyConnectSettings } from "@/features/blocks/integrations/pabbly/components/PabblyConnectSettings";
 import { PixelSettings } from "@/features/blocks/integrations/pixel/components/PixelSettings";
 import { SendEmailSettings } from "@/features/blocks/integrations/sendEmail/components/SendEmailSettings";
+import { WhatsAppSendTemplateSettings } from "@/features/blocks/integrations/whatsappSendTemplate/components/WhatsAppSendTemplateSettings";
 import { ZapierSettings } from "@/features/blocks/integrations/zapier/components/ZapierSettings";
 import { AbTestSettings } from "@/features/blocks/logic/abTest/components/AbTestSettings";
 import { JumpSettings } from "@/features/blocks/logic/jump/components/JumpSettings";
@@ -352,13 +353,17 @@ export const NodeSettings = ({
           onOptionsChange={updateOptions}
         />
       );
-    }
-    case IntegrationBlockType.OPEN_AI: {
+    }    case IntegrationBlockType.OPEN_AI: {
       return <OpenAISettings block={node} onOptionsChange={updateOptions} />;
     }
     case IntegrationBlockType.PIXEL: {
       return (
         <PixelSettings options={node.options} onOptionsChange={updateOptions} />
+      );
+    }
+    case IntegrationBlockType.WHATSAPP_SEND_TEMPLATE: {
+      return (
+        <WhatsAppSendTemplateSettings block={node} onOptionsChange={updateOptions} />
       );
     }
     case LogicBlockType.CONDITION:
