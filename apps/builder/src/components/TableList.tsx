@@ -178,6 +178,6 @@ export const TableList = <T extends object>({
 
 const addIdsIfMissing = <T,>(items?: T[]): T[] | undefined =>
   items?.map((item) => ({
-    id: createId(),
     ...item,
+    id: (item as any)?.id || createId(),
   }));
