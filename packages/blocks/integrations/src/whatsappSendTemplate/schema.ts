@@ -35,7 +35,7 @@ export const whatsappSendTemplateBlockSchema = blockBaseSchema
     }),
   )
   .openapi({
-    title: "WhatsApp - Disparar modelo",
+    title: "WhatsApp",
     ref: "whatsappSendTemplateBlock",
   });
 
