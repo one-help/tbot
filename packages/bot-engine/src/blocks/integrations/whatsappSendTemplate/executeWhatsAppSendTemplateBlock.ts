@@ -184,8 +184,10 @@ const buildTemplateComponents = (
   sessionStore: SessionStore,
 ) => {
   const groupedComponents = components.reduce((acc, component) => {
-    if (!acc[component.type]) {
-      acc[component.type] = [];
+    const facebookType = component.type;
+    
+    if (!acc[facebookType]) {
+      acc[facebookType] = [];
     }
     
     const parsedText = parseVariables(component.text || "", {
@@ -193,7 +195,7 @@ const buildTemplateComponents = (
       sessionStore,
     });
 
-    acc[component.type].push({
+    acc[facebookType].push({
       type: "text",
       parameter_name: component.parameter_name,
       text: parsedText,

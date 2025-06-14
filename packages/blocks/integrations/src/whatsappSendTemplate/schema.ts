@@ -4,7 +4,7 @@ import { IntegrationBlockType } from "../constants";
 
 export const whatsappTemplateComponentSchema = z.object({
   id: z.string(),
-  type: z.enum(["header", "body", "footer"]),
+  type: z.enum(["header", "body", "footer"]).default('body'), 
   parameter_name: z.string().optional(),
   text: z.string().optional(),
 });
