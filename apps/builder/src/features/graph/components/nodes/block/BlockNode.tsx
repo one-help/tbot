@@ -290,7 +290,7 @@ export const BlockNode = ({
                 align="flex-start"                w="full"
                 transition="border-color 0.2s"
               >
-                <BlockIcon type={block.type} block={block} mt=".25rem" />
+                <BlockIcon type={block.type} mt=".25rem" />
                 {typebot?.groups.at(indices.groupIndex)?.id && (
                   <BlockNodeContent
                     block={block}
