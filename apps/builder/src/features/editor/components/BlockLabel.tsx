@@ -92,10 +92,9 @@ export const getIntegrationBlockLabel = (
   ),
   [IntegrationBlockType.HTTP_REQUEST]: "HTTP request",
   [IntegrationBlockType.ZAPIER]: t("editor.sidebarBlock.zapier.label"),
-  [IntegrationBlockType.MAKE_COM]: t("editor.sidebarBlock.makecom.label"),  [IntegrationBlockType.PABBLY_CONNECT]: t("editor.sidebarBlock.pabbly.label"),
-  [IntegrationBlockType.EMAIL]: t("editor.sidebarBlock.email.label"),
+  [IntegrationBlockType.MAKE_COM]: t("editor.sidebarBlock.makecom.label"),  [IntegrationBlockType.PABBLY_CONNECT]: t("editor.sidebarBlock.pabbly.label"),  [IntegrationBlockType.EMAIL]: t("editor.sidebarBlock.email.label"),
   [IntegrationBlockType.CHATWOOT]: t("editor.sidebarBlock.chatwoot.label"),
   [IntegrationBlockType.OPEN_AI]: t("editor.sidebarBlock.openai.label"),
   [IntegrationBlockType.PIXEL]: t("editor.sidebarBlock.pixel.label"),
-  [IntegrationBlockType.WHATSAPP_SEND_TEMPLATE]: "WhatsApp",
+  [IntegrationBlockType.WHATSAPP_SEND_TEMPLATE]: "WhatsApp - Disparar modelo",
 });
