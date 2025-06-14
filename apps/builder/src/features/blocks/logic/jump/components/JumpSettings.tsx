@@ -44,10 +44,11 @@ export const JumpSettings = ({ groupId, options, onOptionsChange }: Props) => {
       />
       {selectedGroup && selectedGroup.blocks.length > 1 && (
         <Select
-          selectedItem={options?.blockId}          items={selectedGroup.blocks.map((block, index) => ({
+          selectedItem={options?.blockId}           
+           items={selectedGroup.blocks.map((block, index) => ({
             label: `Block #${(index + 1).toString()}`,
             value: block.id,
-            icon: <BlockIcon type={block.type} block={block} />,
+            icon: <BlockIcon type={block.type} />,
           }))}
           onSelect={handleBlockIdChange}
           placeholder="Selecione um bloco"
