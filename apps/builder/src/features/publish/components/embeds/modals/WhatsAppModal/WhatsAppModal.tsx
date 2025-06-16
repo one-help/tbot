@@ -150,12 +150,11 @@ export const WhatsAppModal = ({ isOpen, onClose }: ModalProps): JSX.Element => {
       },
     });
   };
-
   const updateSessionExpiryTimeout = (sessionExpiryTimeout?: number) => {
     if (
       !typebot ||
       (sessionExpiryTimeout &&
-        (sessionExpiryTimeout <= 0 || sessionExpiryTimeout > 48))
+        (sessionExpiryTimeout <= 0 || sessionExpiryTimeout > 8760)) // 8760 = 1 year in hours
     )
       return;
     updateTypebot({
@@ -235,7 +234,7 @@ export const WhatsAppModal = ({ isOpen, onClose }: ModalProps): JSX.Element => {
                               whatsAppSettings?.sessionExpiryTimeout
                             }
                             placeholder={defaultSessionExpiryTimeout.toString()}
-                            moreInfoTooltip="A number between 0 and 48 that represents the time in hours after which the session will expire if the user does not interact with the bot. The conversation restarts if the user sends a message after that expiration time."
+                            moreInfoTooltip="A number between 0 and 8760 that represents the time in hours after which the session will expire if the user does not interact with the bot. The conversation restarts if the user sends a message after that expiration time. Set to 0 for no expiration."
                             onValueChange={updateSessionExpiryTimeout}
                             withVariableButton={false}
                             suffix="hours"

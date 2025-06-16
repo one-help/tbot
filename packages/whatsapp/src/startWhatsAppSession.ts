@@ -115,7 +115,7 @@ export const startWhatsAppSession = async ({
             }
           : undefined,
       },
-      expiryTimeout: sessionExpiryTimeoutHours * 60 * 60 * 1000,
+      expiryTimeout: sessionExpiryTimeoutHours > 0 ? sessionExpiryTimeoutHours * 60 * 60 * 1000 : 0, // 0 means no expiration
     },
     sessionStore,
   });

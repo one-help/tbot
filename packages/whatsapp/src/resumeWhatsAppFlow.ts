@@ -87,10 +87,10 @@ export const resumeWhatsAppFlow = async ({
 
   if (aggregationResponse.status === "found newer message")
     throw new WhatsAppError("Found newer message, skipping this one");
-
   const isSessionExpired =
     session &&
     isDefined(session.state.expiryTimeout) &&
+    session.state.expiryTimeout > 0 && // Only expire if timeout is greater than 0
     session?.updatedAt.getTime() + session.state.expiryTimeout < Date.now();
 
   if (aggregationResponse.status === "treat as unique message") {

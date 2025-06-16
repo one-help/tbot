@@ -41,6 +41,6 @@ export const defaultSystemMessages = {
   whatsAppPictureChoiceSelectLabel: "Select",
 } as const satisfies NonNullable<Settings["general"]>["systemMessages"];
 
-export const defaultSessionExpiryTimeout = 4;
+export const defaultSessionExpiryTimeout = 720; // 30 days in hours (720 = 30 * 24)
 
 export const rememberUserStorages = ["session", "local"] as const;
