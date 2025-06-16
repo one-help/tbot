@@ -6,6 +6,7 @@ import type { SessionState } from "@typebot.io/chat-session/schemas";
 import type { LogInSession } from "@typebot.io/logs/schemas";
 import type { SessionStore } from "@typebot.io/runtime-session-store";
 import { parseVariables } from "@typebot.io/variables/parseVariables";
+import { normalizeBrazilianPhoneNumber } from "@typebot.io/whatsapp/normalizeBrazilianPhoneNumber";
 import { updateVariablesInSession } from "../../../updateVariablesInSession";
 import type { ExecuteIntegrationResponse } from "../../../types";
 
@@ -65,7 +66,6 @@ export const executeWhatsAppSendTemplateBlock = async (
     variables: typebot.variables,
     sessionStore,
   });
-
   if (!parsedTemplateName || !parsedPhoneNumberId || !parsedRecipientPhone || !parsedApiUrl || !parsedApiToken) {
     logs.push({
       status: "error",
@@ -74,13 +74,16 @@ export const executeWhatsAppSendTemplateBlock = async (
     return { outgoingEdgeId: block.outgoingEdgeId, logs };
   }
 
+  // Normalize Brazilian phone numbers to handle 8/9 digit mobile numbers
+  const normalizedRecipientPhone = normalizeBrazilianPhoneNumber(parsedRecipientPhone);
+
   // Build the WhatsApp template components
   const templateComponents = buildTemplateComponents(components || [], typebot.variables, sessionStore);
 
   // Build the request payload
   const requestBody = {
     messaging_product: "whatsapp",
-    to: parsedRecipientPhone,
+    to: normalizedRecipientPhone,
     recipient_type: "individual",
     type: "template",
     template: {

@@ -6,6 +6,7 @@ import { env } from "@typebot.io/env";
 import { parseUnknownError } from "@typebot.io/lib/parseUnknownError";
 import { WhatsAppError } from "@typebot.io/whatsapp/WhatsAppError";
 import { incomingWebhookErrorCodes } from "@typebot.io/whatsapp/constants";
+import { normalizeBrazilianPhoneNumber } from "@typebot.io/whatsapp/normalizeBrazilianPhoneNumber";
 import { resumeWhatsAppFlow } from "@typebot.io/whatsapp/resumeWhatsAppFlow";
 import {
   type WhatsAppWebhookRequestBody,
@@ -33,18 +34,21 @@ export const receiveMessagePreview = publicProcedure
   .mutation(async ({ input: { entry } }) => {
     assertEnv();
 
-    try {
-      await processErrors(entry);
+    try {      await processErrors(entry);
       const { receivedMessage, contactName, contactPhoneNumber } =
         extractMessageData(entry);
       if (!receivedMessage || receivedMessage.type === "reaction")
         return { message: "No message content found" };
+      
+      // Normalize Brazilian phone numbers to handle 8/9 digit mobile numbers
+      const normalizedPhoneNumber = normalizeBrazilianPhoneNumber(receivedMessage.from);
+      
       await resumeWhatsAppFlow({
         receivedMessage,
-        sessionId: `${whatsAppPreviewSessionIdPrefix}${receivedMessage.from}`,
+        sessionId: `${whatsAppPreviewSessionIdPrefix}${normalizedPhoneNumber}`,
         contact: {
           name: contactName,
-          phoneNumber: contactPhoneNumber,
+          phoneNumber: normalizedPhoneNumber, // Use normalized number for contact as well
         },
       });
     } catch (err) {

@@ -2,6 +2,7 @@ import { publicProcedure } from "@/helpers/server/trpc";
 import * as Sentry from "@sentry/nextjs";
 import { parseUnknownError } from "@typebot.io/lib/parseUnknownError";
 import { WhatsAppError } from "@typebot.io/whatsapp/WhatsAppError";
+import { normalizeBrazilianPhoneNumber } from "@typebot.io/whatsapp/normalizeBrazilianPhoneNumber";
 import { resumeWhatsAppFlow } from "@typebot.io/whatsapp/resumeWhatsAppFlow";
 import {
   type WhatsAppWebhookRequestBody,
@@ -40,18 +41,19 @@ export const receiveMessage = publicProcedure
     } = extractMessageDetails(entry);
     if (!receivedMessage || receivedMessage.type === "reaction")
       return { message: "No message content found" };
-    if (!phoneNumberId) return { message: "No phone number found" };
-
-    try {
+    if (!phoneNumberId) return { message: "No phone number found" };    try {
+      // Normalize Brazilian phone numbers to handle 8/9 digit mobile numbers
+      const normalizedPhoneNumber = normalizeBrazilianPhoneNumber(receivedMessage.from);
+      
       await resumeWhatsAppFlow({
         receivedMessage,
-        sessionId: `${whatsAppSessionIdPrefix}${phoneNumberId}-${receivedMessage.from}`,
+        sessionId: `${whatsAppSessionIdPrefix}${phoneNumberId}-${normalizedPhoneNumber}`,
         phoneNumberId,
         credentialsId,
         workspaceId,
         contact: {
           name: contactName,
-          phoneNumber: contactPhoneNumber,
+          phoneNumber: normalizedPhoneNumber, // Use normalized number for contact as well
         },
         referral,
       });

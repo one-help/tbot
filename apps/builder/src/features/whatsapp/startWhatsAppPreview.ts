@@ -13,6 +13,7 @@ import {
   getSessionStore,
 } from "@typebot.io/runtime-session-store";
 import { isReadTypebotForbidden } from "@typebot.io/typebot/helpers/isReadTypebotForbidden";
+import { normalizeBrazilianPhoneNumber } from "@typebot.io/whatsapp/normalizeBrazilianPhoneNumber";
 import { sendChatReplyToWhatsApp } from "@typebot.io/whatsapp/sendChatReplyToWhatsApp";
 import { sendWhatsAppMessage } from "@typebot.io/whatsapp/sendWhatsAppMessage";
 import { z } from "@typebot.io/zod";
@@ -79,14 +80,15 @@ export const startWhatsAppPreview = authenticatedProcedure
           },
         },
       },
-    });
-    if (
+    });    if (
       !existingTypebot?.id ||
       (await isReadTypebotForbidden(existingTypebot, user))
     )
       throw new TRPCError({ code: "NOT_FOUND", message: "Bot not found" });
 
-    const sessionId = `wa-preview-${to}`;
+    // Normalize Brazilian phone numbers to handle 8/9 digit mobile numbers
+    const normalizedTo = normalizeBrazilianPhoneNumber(to);
+    const sessionId = `wa-preview-${normalizedTo}`;
 
     const existingSession = await prisma.chatSession.findFirst({
       where: {
@@ -131,10 +133,9 @@ export const startWhatsAppPreview = authenticatedProcedure
     });
     deleteSessionStore(sessionId);
 
-    try {
-      if (canSendDirectMessagesToUser) {
+    try {      if (canSendDirectMessagesToUser) {
         await sendChatReplyToWhatsApp({
-          to,
+          to: normalizedTo,
           messages,
           input,
           clientSideActions,
@@ -167,10 +168,8 @@ export const startWhatsAppPreview = authenticatedProcedure
         await restartSession({
           state: newSessionState,
           id: sessionId,
-        });
-
-        await sendWhatsAppMessage({
-          to,
+        });        await sendWhatsAppMessage({
+          to: normalizedTo,
           message: {
             type: "template",
             template: {
