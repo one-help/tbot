@@ -9,6 +9,7 @@ import { elevenlabsBlock } from "@typebot.io/elevenlabs-block";
 import { groqBlock } from "@typebot.io/groq-block";
 import { mistralBlock } from "@typebot.io/mistral-block";
 import { nocodbBlock } from "@typebot.io/nocodb-block";
+import { onehelpApiBlock } from "@typebot.io/onehelp-api-block";
 import { openRouterBlock } from "@typebot.io/open-router-block";
 import { openAIBlock } from "@typebot.io/openai-block";
 import { perplexityBlock } from "@typebot.io/perplexity-block";
@@ -32,11 +33,10 @@ export const forgedBlocks = {
   [nocodbBlock.id]: nocodbBlock,
   [segmentBlock.id]: segmentBlock,
   [groqBlock.id]: groqBlock,
-  [zendeskBlock.id]: zendeskBlock,
-  [posthogBlock.id]: posthogBlock,
-  [perplexityBlock.id]: perplexityBlock,
+  [zendeskBlock.id]: zendeskBlock,  [posthogBlock.id]: posthogBlock,  [perplexityBlock.id]: perplexityBlock,
   [deepSeekBlock.id]: deepSeekBlock,
   [blinkBlock.id]: blinkBlock,
+  [onehelpApiBlock.id]: onehelpApiBlock,
 };
 export type ForgedBlockDefinition =
   (typeof forgedBlocks)[keyof typeof forgedBlocks];

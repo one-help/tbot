@@ -19,6 +19,8 @@ import { mistralBlock } from "@typebot.io/mistral-block";
 import { mistralBlockSchema } from "@typebot.io/mistral-block/schemas";
 import { nocodbBlock } from "@typebot.io/nocodb-block";
 import { nocodbBlockSchema } from "@typebot.io/nocodb-block/schemas";
+import { onehelpApiBlock } from "@typebot.io/onehelp-api-block";
+import { onehelpApiBlockSchema } from "@typebot.io/onehelp-api-block/schemas";
 import { openRouterBlock } from "@typebot.io/open-router-block";
 import { openRouterBlockSchema } from "@typebot.io/open-router-block/schemas";
 import { openAIBlock } from "@typebot.io/openai-block";
@@ -52,10 +54,9 @@ export const forgedBlockSchemas = {
   [segmentBlock.id]: segmentBlockSchema,
   [groqBlock.id]: groqBlockSchema,
   [zendeskBlock.id]: zendeskBlockSchema,
-  [posthogBlock.id]: posthogBlockSchema,
-  [perplexityBlock.id]: perplexityBlockSchema,
-  [deepSeekBlock.id]: deepSeekBlockSchema,
-  [blinkBlock.id]: blinkBlockSchema,
+  [posthogBlock.id]: posthogBlockSchema,  [perplexityBlock.id]: perplexityBlockSchema,
+  [deepSeekBlock.id]: deepSeekBlockSchema,  [blinkBlock.id]: blinkBlockSchema,
+  [onehelpApiBlock.id]: onehelpApiBlockSchema,
 } as const;
 
 export const forgedBlockSchema = z.discriminatedUnion("type", [
@@ -73,9 +74,8 @@ export const forgedBlockSchema = z.discriminatedUnion("type", [
   segmentBlockSchema,
   groqBlockSchema,
   zendeskBlockSchema,
-  posthogBlockSchema,
-  perplexityBlockSchema,
-  deepSeekBlockSchema,
-  blinkBlockSchema,
+  posthogBlockSchema,  perplexityBlockSchema,
+  deepSeekBlockSchema,  blinkBlockSchema,
+  onehelpApiBlockSchema,
 ]);
 export type ForgedBlock = z.infer<typeof forgedBlockSchema>;

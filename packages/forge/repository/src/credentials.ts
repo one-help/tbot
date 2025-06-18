@@ -17,6 +17,8 @@ import { mistralBlock } from "@typebot.io/mistral-block";
 import { mistralCredentialsSchema } from "@typebot.io/mistral-block/schemas";
 import { nocodbBlock } from "@typebot.io/nocodb-block";
 import { nocodbCredentialsSchema } from "@typebot.io/nocodb-block/schemas";
+import { onehelpApiBlock } from "@typebot.io/onehelp-api-block";
+import { onehelpApiBlockSchema, onehelpApiCredentialsSchema } from "@typebot.io/onehelp-api-block/schemas";
 import { openRouterBlock } from "@typebot.io/open-router-block";
 import { openRouterCredentialsSchema } from "@typebot.io/open-router-block/schemas";
 import { openAIBlock } from "@typebot.io/openai-block";
@@ -49,4 +51,5 @@ export const forgedCredentialsSchemas = {
   [perplexityBlock.id]: perplexityCredentialsSchema,
   [deepSeekBlock.id]: deepSeekCredentialsSchema,
   [blinkBlock.id]: blinkCredentialsSchema,
+  [onehelpApiBlock.id]: onehelpApiCredentialsSchema,
 };
