@@ -5,9 +5,12 @@ import { auth } from "../auth";
 export const httpRequest = createAction({
   auth,
   name: "OneHelp API",
+  parseBlockNodeLabel: (node) => {
+    return `OneHelp API - ${node.selectedAction || "Selecionar ação"}`;
+  },
   options: option.object({
     selectedAction: option.string.layout({
-      label: "Selecionar Action",
+      label: "Selecionar ação",
       isRequired: true,
       placeholder: "Selecione uma requisição HTTP pré-configurada", 
       fetcher: "fetchActions",
