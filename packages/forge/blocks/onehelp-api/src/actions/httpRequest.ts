@@ -4,7 +4,7 @@ import { auth } from "../auth";
 
 export const httpRequest = createAction({
   auth,
-  name: "HTTP Request",
+  name: "OneHelp API",
   options: option.object({
     selectedAction: option.string.layout({
       label: "Selecionar Action",
