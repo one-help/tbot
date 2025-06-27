@@ -204,6 +204,9 @@ export const GroupNode = ({ group, groupIndex }: Props) => {
             pr="8"
           >
             <EditablePreview
+              css={{
+                color: bg === "white" ? "inhehit" : "white",
+              }}
               _hover={{
                 bg: editableHoverBg,
               }}
