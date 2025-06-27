@@ -63,7 +63,6 @@ export const ButtonsBlockSettings = ({ options, onOptionsChange }: Props) => {
           }
         />
       </SwitchWithRelatedSettings>
-
       <SwitchWithRelatedSettings
         label={"Exibir como lista"}
         initialValue={options?.isList ?? defaultChoiceInputOptions.isList}
