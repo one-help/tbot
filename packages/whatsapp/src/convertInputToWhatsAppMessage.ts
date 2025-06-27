@@ -8,7 +8,7 @@ import { env } from "@typebot.io/env";
 import { isDefined, isEmpty } from "@typebot.io/lib/utils";
 import {
   convertRichTextToMarkdown,
-  extractHeaderBodyFooterFromRichText,
+  extractHeaderBodyFooterByRegex,
 } from "@typebot.io/rich-text/convertRichTextToMarkdown";
 import { defaultSystemMessages } from "@typebot.io/settings/constants";
 import type { SystemMessages } from "@typebot.io/settings/schemas";
@@ -111,18 +111,20 @@ export const convertInputToWhatsAppMessages = (
         lastMessage.content.type === "richText" &&
         lastMessage.content.richText
       ) {
-        const { header, body, footer } = extractHeaderBodyFooterFromRichText(
+        const markdown = convertRichTextToMarkdown(
           lastMessage.content.richText,
+          { flavour: "whatsapp" },
         );
+        const { header, body, footer } =
+          extractHeaderBodyFooterByRegex(markdown);
         if (input.items.length > 3) {
-          const bodyText = body || (header || footer ? " " : "―");
           return [
             {
               type: "interactive",
               interactive: {
                 type: "list",
                 header: header ? { type: "text", text: header } : undefined,
-                body: { text: bodyText },
+                body: { text: body || "―" },
                 footer: footer ? { text: footer } : undefined,
                 action: {
                   button: input.options?.buttonLabel ?? "―",
@@ -164,9 +166,7 @@ export const convertInputToWhatsAppMessages = (
             type: "button",
             header:
               header && idx === 0 ? { type: "text", text: header } : undefined,
-            body: {
-              text: idx === 0 ? body || (header || footer ? " " : "―") : "―",
-            },
+            body: { text: idx === 0 ? body || "―" : "―" },
             footer: footer && idx === 0 ? { text: footer } : undefined,
             action: {
               buttons: (() => {

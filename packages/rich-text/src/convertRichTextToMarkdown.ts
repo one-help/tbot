@@ -74,7 +74,7 @@ export function extractHeaderBodyFooterFromRichText(richText: TElement[]) {
       footer +=
         serialize(node, { nodeTypes: defaultNodeTypes, flavour: "whatsapp" }) +
         "\n";
-    } else if ((node as any).text) {
+    } else {
       body += serialize(node, {
         nodeTypes: defaultNodeTypes,
         flavour: "whatsapp",
@@ -86,6 +86,29 @@ export function extractHeaderBodyFooterFromRichText(richText: TElement[]) {
   header = header.trim();
   footer = footer.trim();
   body = body.trim();
+
+  return { header, body, footer };
+}
+
+// Extrai header (#...#) e footer (__...__) do markdown, retorna { header, body, footer }
+export function extractHeaderBodyFooterByRegex(markdown: string) {
+  let header = "";
+  let footer = "";
+  let body = markdown;
+
+  // Extrai header entre #...#
+  const headerMatch = body.match(/#([^#]+)#/);
+  if (headerMatch) {
+    header = headerMatch[1].trim();
+    body = body.replace(headerMatch[0], "").trim();
+  }
+
+  // Extrai footer entre __...__
+  const footerMatch = body.match(/__([^_]+)__/);
+  if (footerMatch) {
+    footer = footerMatch[1].trim();
+    body = body.replace(footerMatch[0], "").trim();
+  }
 
   return { header, body, footer };
 }
