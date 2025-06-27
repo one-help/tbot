@@ -9,7 +9,6 @@ import { isDefined, isEmpty } from "@typebot.io/lib/utils";
 import {
   convertRichTextToMarkdown,
   extractHeaderBodyFooterByRegex,
-  processWhatsAppMarkdown,
 } from "@typebot.io/rich-text/convertRichTextToMarkdown";
 import { defaultSystemMessages } from "@typebot.io/settings/constants";
 import type { SystemMessages } from "@typebot.io/settings/schemas";
@@ -116,9 +115,8 @@ export const convertInputToWhatsAppMessages = (
           lastMessage.content.richText,
           { flavour: "whatsapp" },
         );
-        const processedMarkdown = processWhatsAppMarkdown(markdown);
         const { header, body, footer } =
-          extractHeaderBodyFooterByRegex(processedMarkdown);
+          extractHeaderBodyFooterByRegex(markdown);
         if (input.items.length > 3) {
           return [
             {

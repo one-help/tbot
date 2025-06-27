@@ -112,39 +112,3 @@ export function extractHeaderBodyFooterByRegex(markdown: string) {
 
   return { header, body, footer };
 }
-
-// Converte markdown padrão para formato WhatsApp
-export function processWhatsAppMarkdown(markdown: string): string {
-  // Padrão para encontrar texto entre asteriscos (*texto*) que não esteja dentro de outros marcadores
-  const singleAsteriskPattern = /(?<![*_~`])(\*([^*\n]+)\*)(?![*_~`])/g;
-
-  // Padrões para encontrar tags HTML
-  const emPattern = /<em>([^<]+)<\/em>/g;
-  const pPattern = /<p>([^<]*(?:<(?!em|\/em)[^>]*>[^<]*)*)<\/p>/g;
-  const anyTagPattern = /<(?!em|\/em)[^>]*>/g;
-
-  // Função para processar um trecho de texto
-  const processText = (text: string): string => {
-    // Substitui <em>texto</em> por **texto** (negrito no WhatsApp)
-    let processed = text.replace(emPattern, "**$1**");
-
-    // Remove todas as outras tags HTML, preservando seu conteúdo
-    processed = processed.replace(anyTagPattern, "");
-
-    // Substitui *texto* por **texto** (negrito no WhatsApp)
-    processed = processed.replace(singleAsteriskPattern, "**$2**");
-
-    return processed;
-  };
-
-  // Processa o markdown principal
-  let processed = processText(markdown);
-
-  // Também processa texto dentro de variáveis {{variável}}
-  const variablePattern = /{{([^}]+)}}/g;
-  processed = processed.replace(variablePattern, (match, content) => {
-    return `{{${processText(content)}}}`;
-  });
-
-  return processed;
-}
