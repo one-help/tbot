@@ -140,7 +140,7 @@ export const GroupFocusToolbar = ({
                 }
                 minH="32px"
               >
-                <span style={{ color: c }}>{c}</span>
+                <span style={{ color: c }}>Alterar fundo</span>
               </MenuItem>
             ))}
           </MenuList>
