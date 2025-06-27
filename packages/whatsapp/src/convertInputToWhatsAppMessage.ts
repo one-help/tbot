@@ -6,7 +6,10 @@ import { defaultPictureChoiceOptions } from "@typebot.io/blocks-inputs/pictureCh
 import type { ContinueChatResponse } from "@typebot.io/chat-api/schemas";
 import { env } from "@typebot.io/env";
 import { isDefined, isEmpty } from "@typebot.io/lib/utils";
-import { convertRichTextToMarkdown } from "@typebot.io/rich-text/convertRichTextToMarkdown";
+import {
+  convertRichTextToMarkdown,
+  extractHeaderBodyFooterFromRichText,
+} from "@typebot.io/rich-text/convertRichTextToMarkdown";
 import { defaultSystemMessages } from "@typebot.io/settings/constants";
 import type { SystemMessages } from "@typebot.io/settings/schemas";
 import type { WhatsAppSendingMessage } from "./schemas";
@@ -101,6 +104,86 @@ export const convertInputToWhatsAppMessages = (
       });
     }
     case InputBlockType.CHOICE: {
+      const isWhatsApp = true;
+      if (
+        isWhatsApp &&
+        lastMessage?.type === BubbleBlockType.TEXT &&
+        lastMessage.content.type === "richText" &&
+        lastMessage.content.richText
+      ) {
+        const { header, body, footer } = extractHeaderBodyFooterFromRichText(
+          lastMessage.content.richText,
+        );
+        if (input.items.length > 3) {
+          return [
+            {
+              type: "interactive",
+              interactive: {
+                type: "list",
+                header: header ? { type: "text", text: header } : undefined,
+                body: { text: body || "―" },
+                footer: footer ? { text: footer } : undefined,
+                action: {
+                  button: input.options?.buttonLabel ?? "―",
+                  sections: [
+                    {
+                      title:
+                        input.options?.questionLabel ?? "Selecione uma opção",
+                      rows: input.items.map((item) => {
+                        const title =
+                          typeof item.content === "string"
+                            ? item.content
+                            : String(item.content);
+                        if (title.length > 24) {
+                          return {
+                            id: item.id,
+                            title: title.slice(0, 21) + "...",
+                            description: title,
+                          };
+                        }
+                        return {
+                          id: item.id,
+                          title,
+                        };
+                      }),
+                    },
+                  ],
+                },
+              },
+            },
+          ];
+        }
+        const items = groupArrayByArraySize(
+          input.items.filter((item) => isDefined(item.content)),
+          env.WHATSAPP_INTERACTIVE_GROUP_SIZE,
+        ) as ButtonItem[][];
+        return items.map((items, idx) => ({
+          type: "interactive",
+          interactive: {
+            type: "button",
+            header:
+              header && idx === 0 ? { type: "text", text: header } : undefined,
+            body: { text: idx === 0 ? body || "―" : "―" },
+            footer: footer && idx === 0 ? { text: footer } : undefined,
+            action: {
+              buttons: (() => {
+                const buttonTexts = items
+                  .filter((item) => item.content)
+                  .map((item) => item.content as string);
+                const uniqueTitles = getUniqueButtonTitles(buttonTexts);
+
+                return items.map((item, index) => ({
+                  type: "reply",
+                  reply: {
+                    id: item.id,
+                    title: uniqueTitles[index],
+                  },
+                }));
+              })(),
+            },
+          },
+        }));
+      }
       if (
         input.options?.isMultipleChoice ??
         defaultChoiceInputOptions.isMultipleChoice

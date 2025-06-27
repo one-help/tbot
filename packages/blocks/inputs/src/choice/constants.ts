@@ -7,5 +7,6 @@ export const defaultChoiceInputOptions = {
   searchInputPlaceholder: "Filter the options...",
   isMultipleChoice: false,
   isSearchable: false,
+  isList: false,
   areInitialSearchButtonsVisible: true,
 } as const satisfies ChoiceInputBlock["options"];

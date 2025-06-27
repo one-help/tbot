@@ -14,6 +14,7 @@ import {
   PopoverContent,
   Portal,
   SlideFade,
+  Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useTranslate } from "@tolgee/react";
@@ -138,6 +139,15 @@ export const ButtonsItemNode = ({ item, indices, isMouseOver }: Props) => {
               onWheelCapture={(e) => e.stopPropagation()}
             />
           </Editable>
+          <Text
+            ml={2}
+            fontSize="xs"
+            color={itemValue.length > 20 ? "red.400" : "gray.500"}
+            minW="32px"
+            textAlign="right"
+          >
+            {itemValue.length}/20
+          </Text>
           <SlideFade
             offsetY="5px"
             offsetX="-5px"

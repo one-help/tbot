@@ -21,6 +21,8 @@ export const ButtonsBlockSettings = ({ options, onOptionsChange }: Props) => {
     onOptionsChange({ ...options, isMultipleChoice });
   const updateIsSearchable = (isSearchable: boolean) =>
     onOptionsChange({ ...options, isSearchable });
+  const updateIsList = (isList: boolean) =>
+    onOptionsChange({ ...options, isList });
   const updateButtonLabel = (buttonLabel: string) =>
     onOptionsChange({ ...options, buttonLabel });
   const updateQuestionLabel = (questionLabel: string) =>
@@ -45,20 +47,61 @@ export const ButtonsBlockSettings = ({ options, onOptionsChange }: Props) => {
         }
         onCheckChange={updateIsMultiple}
       >
-        <div></div>
+        <TextInput
+          label={"Texto do botão"}
+          defaultValue={options?.buttonLabel ?? "-"}
+          onChange={updateButtonLabel}
+          helperText={
+            <span
+              style={{
+                color:
+                  (options?.buttonLabel?.length ?? 0) > 24 ? "red" : undefined,
+              }}
+            >
+              {options?.buttonLabel?.length ?? 0}/24
+            </span>
+          }
+        />
       </SwitchWithRelatedSettings>
-      <TextInput
-        label={t("blocks.inputs.settings.submitButton.label")}
-        defaultValue={
-          options?.buttonLabel ?? t("blocks.inputs.settings.buttonText.label")
-        }
-        onChange={updateButtonLabel}
-      />
-      <TextInput
-        label={"Texto para a pergunta"}
-        defaultValue={options?.questionLabel ?? "-"}
-        onChange={updateQuestionLabel}
-      />
+
+      <SwitchWithRelatedSettings
+        label={"Exibir como lista"}
+        initialValue={options?.isList ?? defaultChoiceInputOptions.isList}
+        onCheckChange={updateIsList}
+      >
+        <TextInput
+          label={"Texto do botão de ação"}
+          defaultValue={options?.buttonLabel ?? "-"}
+          onChange={updateButtonLabel}
+          helperText={
+            <span
+              style={{
+                color:
+                  (options?.buttonLabel?.length ?? 0) > 24 ? "red" : undefined,
+              }}
+            >
+              {options?.buttonLabel?.length ?? 0}/24
+            </span>
+          }
+        />
+        <TextInput
+          label={"Texto da pergunta"}
+          defaultValue={options?.questionLabel ?? "-"}
+          onChange={updateQuestionLabel}
+          helperText={
+            <span
+              style={{
+                color:
+                  (options?.questionLabel?.length ?? 0) > 24
+                    ? "red"
+                    : undefined,
+              }}
+            >
+              {options?.questionLabel?.length ?? 0}/24
+            </span>
+          }
+        />
+      </SwitchWithRelatedSettings>
       <SwitchWithRelatedSettings
         label={t("blocks.inputs.settings.isSearchable.label")}
         initialValue={

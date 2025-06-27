@@ -21,6 +21,10 @@ const headerSchema = z
     }),
   );
 
+const footerSchema = z.object({
+  text: z.string(),
+});
+
 const bodySchema = z.object({
   text: z.string(),
 });
@@ -61,6 +65,7 @@ const templateSchema = z.object({
 const interactiveSchema = z.object({
   type: z.enum(["button", "list"]),
   header: headerSchema.optional(),
+  footer: footerSchema.optional(),
   body: bodySchema.optional(),
   action: actionSchema,
 });

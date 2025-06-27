@@ -37,3 +37,37 @@ export const convertRichTextToMarkdown = (
 
   return test.endsWith("\n") ? test.slice(0, -1) : test;
 };
+
+// Função para WhatsApp: extrai header/body/footer do richText
+export function extractHeaderBodyFooterFromRichText(richText: TElement[]) {
+  let header = "";
+  let footer = "";
+  let body = "";
+
+  for (const node of richText) {
+    if (node.children && Array.isArray(node.children)) {
+      for (const child of node.children) {
+        if (child.code) {
+          header += (child.text || "") + "\n";
+        } else if (child.subscript) {
+          footer += (child.text || "") + "\n";
+        } else {
+          body += child.text || "";
+        }
+      }
+    } else if (node.code) {
+      header += (node.text || "") + "\n";
+    } else if (node.subscript) {
+      footer += (node.text || "") + "\n";
+    } else if (node.text) {
+      body += node.text;
+    }
+  }
+
+  // Remove quebras extras
+  header = header.trim();
+  footer = footer.trim();
+  body = body.trim();
+
+  return { header, body, footer };
+}
