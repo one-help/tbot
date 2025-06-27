@@ -11,6 +11,7 @@ export const choiceInputOptionsSchema = optionBaseSchema.merge(
   z.object({
     isMultipleChoice: z.boolean().optional(),
     buttonLabel: z.string().optional(),
+    questionLabel: z.string().optional(),
     dynamicVariableId: z.string().optional(),
     isSearchable: z.boolean().optional(),
     searchInputPlaceholder: z.string().optional(),

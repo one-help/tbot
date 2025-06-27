@@ -23,6 +23,8 @@ export const ButtonsBlockSettings = ({ options, onOptionsChange }: Props) => {
     onOptionsChange({ ...options, isSearchable });
   const updateButtonLabel = (buttonLabel: string) =>
     onOptionsChange({ ...options, buttonLabel });
+  const updateQuestionLabel = (questionLabel: string) =>
+    onOptionsChange({ ...options, questionLabel });
   const updateSearchInputPlaceholder = (searchInputPlaceholder: string) =>
     onOptionsChange({ ...options, searchInputPlaceholder });
   const updateSaveVariable = (variable?: Variable) =>
@@ -43,14 +45,23 @@ export const ButtonsBlockSettings = ({ options, onOptionsChange }: Props) => {
         }
         onCheckChange={updateIsMultiple}
       >
-        <TextInput
-          label={t("blocks.inputs.settings.submitButton.label")}
-          defaultValue={
-            options?.buttonLabel ?? t("blocks.inputs.settings.buttonText.label")
-          }
-          onChange={updateButtonLabel}
-        />
+        <div></div>
       </SwitchWithRelatedSettings>
+      <TextInput
+        label={t("blocks.inputs.settings.submitButton.label")}
+        defaultValue={
+          options?.buttonLabel ?? t("blocks.inputs.settings.buttonText.label")
+        }
+        onChange={updateButtonLabel}
+      />
+      <TextInput
+        label={t("blocks.inputs.settings.questionLabel.label")}
+        defaultValue={
+          options?.questionLabel ??
+          t("blocks.inputs.settings.questionLabel.label")
+        }
+        onChange={updateQuestionLabel}
+      />
       <SwitchWithRelatedSettings
         label={t("blocks.inputs.settings.isSearchable.label")}
         initialValue={

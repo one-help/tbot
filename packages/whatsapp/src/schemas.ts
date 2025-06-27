@@ -26,12 +26,29 @@ const bodySchema = z.object({
 });
 
 const actionSchema = z.object({
-  buttons: z.array(
-    z.object({
-      type: z.literal("reply"),
-      reply: z.object({ id: z.string(), title: z.string() }),
-    }),
-  ),
+  buttons: z
+    .array(
+      z.object({
+        type: z.literal("reply"),
+        reply: z.object({ id: z.string(), title: z.string() }),
+      }),
+    )
+    .optional(),
+  button: z.string().optional(),
+  sections: z
+    .array(
+      z.object({
+        title: z.string(),
+        rows: z.array(
+          z.object({
+            id: z.string(),
+            title: z.string(),
+            description: z.string().optional(),
+          }),
+        ),
+      }),
+    )
+    .optional(),
 });
 
 const templateSchema = z.object({
@@ -42,7 +59,7 @@ const templateSchema = z.object({
 });
 
 const interactiveSchema = z.object({
-  type: z.literal("button"),
+  type: z.enum(["button", "list"]),
   header: headerSchema.optional(),
   body: bodySchema.optional(),
   action: actionSchema,

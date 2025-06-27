@@ -117,6 +117,35 @@ export const convertInputToWhatsAppMessages = (
             },
           },
         ];
+      if (input.items.length > 3) {
+        return [
+          {
+            type: "interactive",
+            interactive: {
+              type: "list",
+              body: {
+                text: lastMessageText ?? "―",
+              },
+              action: {
+                button: input.options?.buttonLabel ?? "―",
+                sections: [
+                  {
+                    title:
+                      input.options?.questionLabel ?? "Selecione uma opção",
+                    rows: input.items.map((item) => ({
+                      id: item.id,
+                      title:
+                        typeof item.content === "string"
+                          ? item.content
+                          : String(item.content),
+                    })),
+                  },
+                ],
+              },
+            },
+          },
+        ];
+      }
       const items = groupArrayByArraySize(
         input.items.filter((item) => isDefined(item.content)),
         env.WHATSAPP_INTERACTIVE_GROUP_SIZE,
