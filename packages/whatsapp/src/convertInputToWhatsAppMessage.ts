@@ -115,13 +115,14 @@ export const convertInputToWhatsAppMessages = (
           lastMessage.content.richText,
         );
         if (input.items.length > 3) {
+          const bodyText = body || (header || footer ? " " : "―");
           return [
             {
               type: "interactive",
               interactive: {
                 type: "list",
                 header: header ? { type: "text", text: header } : undefined,
-                body: { text: body || "―" },
+                body: { text: bodyText },
                 footer: footer ? { text: footer } : undefined,
                 action: {
                   button: input.options?.buttonLabel ?? "―",
@@ -163,7 +164,9 @@ export const convertInputToWhatsAppMessages = (
             type: "button",
             header:
               header && idx === 0 ? { type: "text", text: header } : undefined,
-            body: { text: idx === 0 ? body || "―" : "―" },
+            body: {
+              text: idx === 0 ? body || (header || footer ? " " : "―") : "―",
+            },
             footer: footer && idx === 0 ? { text: footer } : undefined,
             action: {
               buttons: (() => {
