@@ -132,13 +132,23 @@ export const convertInputToWhatsAppMessages = (
                   {
                     title:
                       input.options?.questionLabel ?? "Selecione uma opção",
-                    rows: input.items.map((item) => ({
-                      id: item.id,
-                      title:
+                    rows: input.items.map((item) => {
+                      const title =
                         typeof item.content === "string"
                           ? item.content
-                          : String(item.content),
-                    })),
+                          : String(item.content);
+                      if (title.length > 24) {
+                        return {
+                          id: item.id,
+                          title: title.slice(0, 21) + "...",
+                          description: title,
+                        };
+                      }
+                      return {
+                        id: item.id,
+                        title,
+                      };
+                    }),
                   },
                 ],
               },
