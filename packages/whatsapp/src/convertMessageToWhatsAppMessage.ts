@@ -7,7 +7,10 @@ import {
 import type { EmbeddableVideoBubbleContentType } from "@typebot.io/blocks-bubbles/video/schema";
 import type { ContinueChatResponse } from "@typebot.io/chat-api/schemas";
 import { isSvgSrc } from "@typebot.io/lib/utils";
-import { convertRichTextToMarkdown } from "@typebot.io/rich-text/convertRichTextToMarkdown";
+import {
+  convertRichTextToMarkdown,
+  processWhatsAppMarkdown,
+} from "@typebot.io/rich-text/convertRichTextToMarkdown";
 import type { WhatsAppSendingMessage } from "./schemas";
 
 export const convertMessageToWhatsAppMessage = (
@@ -19,12 +22,14 @@ export const convertMessageToWhatsAppMessage = (
         throw new Error("Expect rich text message");
       if (!message.content.richText || message.content.richText.length === 0)
         return null;
+      const markdown = convertRichTextToMarkdown(message.content.richText, {
+        flavour: "whatsapp",
+      });
+      const processedMarkdown = processWhatsAppMarkdown(markdown);
       return {
         type: "text",
         text: {
-          body: convertRichTextToMarkdown(message.content.richText, {
-            flavour: "whatsapp",
-          }),
+          body: processedMarkdown,
         },
       };
     }

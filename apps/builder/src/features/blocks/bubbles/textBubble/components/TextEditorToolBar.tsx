@@ -77,20 +77,6 @@ export const TextEditorToolBar = ({
           aria-label="Toggle underline"
         />
       </span>
-      <span data-testid="header-button">
-        <MarkToolbarButton
-          nodeType={getPluginType(editor, MARK_CODE)}
-          icon={<ThunderIcon />}
-          aria-label="Toggle header"
-        />
-      </span>
-      <span data-testid="footer-button">
-        <MarkToolbarButton
-          nodeType={getPluginType(editor, MARK_SUBSCRIPT)}
-          icon={<TemplateIcon />}
-          aria-label="Toggle footer"
-        />
-      </span>
       <span data-testid="link-button">
         <LinkToolbarButton icon={<LinkIcon />} aria-label="Add link" />
       </span>

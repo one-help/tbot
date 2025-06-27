@@ -112,3 +112,22 @@ export function extractHeaderBodyFooterByRegex(markdown: string) {
 
   return { header, body, footer };
 }
+
+// Converte markdown padrão para formato WhatsApp
+export function processWhatsAppMarkdown(markdown: string): string {
+  // Padrão para encontrar texto entre asteriscos (*texto*) que não esteja dentro de outros marcadores
+  const singleAsteriskPattern = /(?<![*_~`])(\*([^*\n]+)\*)(?![*_~`])/g;
+
+  // Substitui *texto* por **texto** (negrito no WhatsApp)
+  let processed = markdown.replace(singleAsteriskPattern, "**$2**");
+
+  // Também processa texto dentro de variáveis {{variável}}
+  const variablePattern = /{{([^}]+)}}/g;
+  processed = processed.replace(variablePattern, (match, content) => {
+    // Aplica a mesma substituição dentro da variável
+    const processedContent = content.replace(singleAsteriskPattern, "**$2**");
+    return `{{${processedContent}}}`;
+  });
+
+  return processed;
+}
