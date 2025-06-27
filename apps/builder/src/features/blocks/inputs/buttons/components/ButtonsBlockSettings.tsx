@@ -55,11 +55,8 @@ export const ButtonsBlockSettings = ({ options, onOptionsChange }: Props) => {
         onChange={updateButtonLabel}
       />
       <TextInput
-        label={t("blocks.inputs.settings.questionLabel.label")}
-        defaultValue={
-          options?.questionLabel ??
-          t("blocks.inputs.settings.questionLabel.label")
-        }
+        label={"Texto para a pergunta"}
+        defaultValue={options?.questionLabel ?? "-"}
         onChange={updateQuestionLabel}
       />
       <SwitchWithRelatedSettings

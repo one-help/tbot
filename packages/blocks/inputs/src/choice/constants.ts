@@ -3,6 +3,7 @@ import type { ChoiceInputBlock } from "./schema";
 
 export const defaultChoiceInputOptions = {
   buttonLabel: defaultButtonLabel,
+  questionLabel: "Selecione uma opção",
   searchInputPlaceholder: "Filter the options...",
   isMultipleChoice: false,
   isSearchable: false,
