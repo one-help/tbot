@@ -48,19 +48,37 @@ export function extractHeaderBodyFooterFromRichText(richText: TElement[]) {
     if (node.children && Array.isArray(node.children)) {
       for (const child of node.children) {
         if (child.code) {
-          header += (child.text || "") + "\n";
+          header +=
+            serialize(child, {
+              nodeTypes: defaultNodeTypes,
+              flavour: "whatsapp",
+            }) + "\n";
         } else if (child.subscript) {
-          footer += (child.text || "") + "\n";
+          footer +=
+            serialize(child, {
+              nodeTypes: defaultNodeTypes,
+              flavour: "whatsapp",
+            }) + "\n";
         } else {
-          body += child.text || "";
+          body += serialize(child, {
+            nodeTypes: defaultNodeTypes,
+            flavour: "whatsapp",
+          });
         }
       }
-    } else if (node.code) {
-      header += (node.text || "") + "\n";
-    } else if (node.subscript) {
-      footer += (node.text || "") + "\n";
-    } else if (node.text) {
-      body += node.text;
+    } else if ((node as any).code) {
+      header +=
+        serialize(node, { nodeTypes: defaultNodeTypes, flavour: "whatsapp" }) +
+        "\n";
+    } else if ((node as any).subscript) {
+      footer +=
+        serialize(node, { nodeTypes: defaultNodeTypes, flavour: "whatsapp" }) +
+        "\n";
+    } else if ((node as any).text) {
+      body += serialize(node, {
+        nodeTypes: defaultNodeTypes,
+        flavour: "whatsapp",
+      });
     }
   }
 
