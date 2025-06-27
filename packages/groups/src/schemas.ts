@@ -24,6 +24,7 @@ export const groupV6Schema = z
       y: z.number(),
     }),
     blocks: z.array(blockSchemaV6),
+    color: z.string().optional(),
   })
   .openapi({
     title: "Group V6",

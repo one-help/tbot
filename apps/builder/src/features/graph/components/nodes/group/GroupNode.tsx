@@ -29,7 +29,8 @@ type Props = {
 };
 
 export const GroupNode = ({ group, groupIndex }: Props) => {
-  const bg = useColorModeValue("white", "gray.950");
+  const defaultBg = useColorModeValue("white", "gray.950");
+  const bg = group.color || defaultBg;
   const previewingBorderColor = useColorModeValue("orange.400", "orange.300");
   const editableHoverBg = useColorModeValue("gray.200", "gray.700");
   const {
@@ -241,6 +242,10 @@ export const GroupNode = ({ group, groupIndex }: Props) => {
                 groupId={group.id}
                 isReadOnly={isReadOnly}
                 onPlayClick={startPreviewAtThisGroup}
+                color={group.color}
+                onColorChange={(color: string) =>
+                  updateGroup(groupIndex, { color })
+                }
               />
             </SlideFade>
           )}
