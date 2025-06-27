@@ -200,7 +200,7 @@ export const convertInputToWhatsAppMessages = (
             },
           },
         ];
-      if (input.items.length > 3) {
+      if (input.items.length > 3 || input.options?.isList) {
         return [
           {
             type: "interactive",
